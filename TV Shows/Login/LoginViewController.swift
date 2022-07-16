@@ -25,7 +25,9 @@ final class LoginViewController: UIViewController {
         self.labelOutlet.font = UIFont(name: "HelveticaNeue", size: 30)
         
         self.activityOutlet.style = .large
-        self.activityOutlet.color = .red
+        
+        startActivity()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: stopActivity)
         
     }
     
@@ -36,16 +38,28 @@ final class LoginViewController: UIViewController {
         self.labelOutlet.text="\(numberOfTaps)"
         
     }
+    
+    private func startActivity() {
+        
+        activityOutlet.startAnimating()
+    
+    }
+    
+    private func stopActivity() {
+        
+        activityOutlet.stopAnimating()
+    
+    }
 
     @IBAction private func startCounter(_ sender: Any) {
         
-        activityOutlet.startAnimating()
+        startActivity()
         
     }
     
     @IBAction private func stopCounter(_ sender: Any) {
         
-        activityOutlet.stopAnimating()
+        stopActivity()
         
     }
     

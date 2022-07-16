@@ -24,6 +24,9 @@ final class LoginViewController: UIViewController {
         self.labelOutlet.textColor = UIColor.darkGray
         self.labelOutlet.font = UIFont(name: "HelveticaNeue", size: 30)
         
+        self.activityOutlet.style = .large
+        self.activityOutlet.color = .red
+        
     }
     
     
@@ -34,9 +37,20 @@ final class LoginViewController: UIViewController {
         
     }
 
+    @IBAction private func startCounter(_ sender: Any) {
+        
+        activityOutlet.startAnimating()
+        
+    }
+    
+    @IBAction private func stopCounter(_ sender: Any) {
+        
+        activityOutlet.stopAnimating()
+        
+    }
     
     @IBOutlet weak var labelOutlet: UILabel!
     @IBOutlet var viewOutlet: UIView!
     @IBOutlet weak var button: UIButton!
-    
+    @IBOutlet weak var activityOutlet: UIActivityIndicatorView!
 }

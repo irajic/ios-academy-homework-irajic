@@ -67,4 +67,5 @@ final class LoginViewController: UIViewController {
     @IBOutlet var viewOutlet: UIView!
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var activityOutlet: UIActivityIndicatorView!
+    
 }

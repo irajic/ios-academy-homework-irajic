@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -25,31 +25,28 @@
                                             <constraint firstAttribute="height" constant="99" id="ouY-mG-QG0"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-top-right" translatesAutoresizingMaskIntoConstraints="NO" id="5tb-91-c8T">
-                                        <rect key="frame" x="269" y="0.0" width="202" height="266"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="266" id="AHg-Lc-BjE"/>
-                                            <constraint firstAttribute="width" constant="202" id="Xh5-hI-MV9"/>
-                                        </constraints>
-                                    </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-white" translatesAutoresizingMaskIntoConstraints="NO" id="94B-Gp-Dzh">
-                                        <rect key="frame" x="122" y="172" width="162" height="38"/>
+                                        <rect key="frame" x="122" y="120" width="162" height="38"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="38" id="WnK-C2-bdW"/>
                                             <constraint firstAttribute="width" constant="162" id="hJY-hm-RVK"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-top-right" translatesAutoresizingMaskIntoConstraints="NO" id="5tb-91-c8T">
+                                        <rect key="frame" x="204" y="0.0" width="202" height="266"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="266" id="AHg-Lc-BjE"/>
+                                            <constraint firstAttribute="width" constant="202" id="Xh5-hI-MV9"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="4PI-Fq-k8d" firstAttribute="leading" secondItem="vIE-tI-9sK" secondAttribute="leading" id="1dp-rw-Onc"/>
                                     <constraint firstItem="4PI-Fq-k8d" firstAttribute="top" secondItem="vIE-tI-9sK" secondAttribute="top" id="4m1-1g-n3H"/>
-                                    <constraint firstAttribute="trailing" secondItem="5tb-91-c8T" secondAttribute="trailing" constant="-65" id="9FZ-bV-fLc"/>
-                                    <constraint firstItem="94B-Gp-Dzh" firstAttribute="top" secondItem="vIE-tI-9sK" secondAttribute="topMargin" constant="120" id="Axs-RS-gfV"/>
-                                    <constraint firstAttribute="trailing" secondItem="5tb-91-c8T" secondAttribute="trailing" id="Djq-4h-pJ5"/>
+                                    <constraint firstItem="94B-Gp-Dzh" firstAttribute="top" secondItem="vIE-tI-9sK" secondAttribute="firstBaseline" constant="120" id="Axs-RS-gfV"/>
                                     <constraint firstItem="94B-Gp-Dzh" firstAttribute="leading" secondItem="vIE-tI-9sK" secondAttribute="leadingMargin" constant="114" id="DvX-gb-UfW"/>
-                                    <constraint firstAttribute="trailing" secondItem="4PI-Fq-k8d" secondAttribute="trailing" constant="198" id="JVA-yG-n7H"/>
-                                    <constraint firstAttribute="bottom" secondItem="4PI-Fq-k8d" secondAttribute="bottom" constant="869" id="ZaK-Fz-kyP"/>
                                     <constraint firstItem="5tb-91-c8T" firstAttribute="top" secondItem="vIE-tI-9sK" secondAttribute="top" id="j2c-bw-rfE"/>
+                                    <constraint firstItem="5tb-91-c8T" firstAttribute="trailing" secondItem="vIE-tI-9sK" secondAttribute="trailing" id="lqe-eh-Xit"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="94B-Gp-Dzh" secondAttribute="trailing" constant="114" id="pG7-qk-biX"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="94B-Gp-Dzh" secondAttribute="bottom" constant="686" id="rlC-v2-DU4"/>
                                 </constraints>
@@ -60,6 +57,7 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="vIE-tI-9sK" secondAttribute="bottom" id="5Q4-t4-khw"/>
                             <constraint firstItem="vIE-tI-9sK" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="AAo-pe-yT0"/>
+                            <constraint firstItem="vIE-tI-9sK" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="ZwI-MW-DED"/>
                             <constraint firstItem="vIE-tI-9sK" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="kQt-7F-Fkx"/>
                             <constraint firstItem="vIE-tI-9sK" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="mIn-bW-7de"/>
                         </constraints>
@@ -68,7 +66,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="36.231884057971016" y="82.03125"/>
+            <point key="canvasLocation" x="35.046728971962615" y="81.965442764578839"/>
         </scene>
     </scenes>
     <resources>

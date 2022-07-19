@@ -23,14 +23,14 @@
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-top-right" translatesAutoresizingMaskIntoConstraints="NO" id="UzN-ZR-Psd">
-                                <rect key="frame" x="226" y="44" width="202" height="266"/>
+                                <rect key="frame" x="226" y="0.0" width="202" height="266"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="202" id="DM6-lT-x4P"/>
                                     <constraint firstAttribute="height" constant="266" id="bIV-sg-12r"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-top-left" translatesAutoresizingMaskIntoConstraints="NO" id="c2Y-Ue-hjU">
-                                <rect key="frame" x="0.0" y="44" width="139.66666666666666" height="99"/>
+                                <rect key="frame" x="0.0" y="0.0" width="139.66666666666666" height="99"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="99" id="n2m-Tg-KH8"/>
                                     <constraint firstAttribute="width" constant="139.66999999999999" id="uqa-mB-zLr"/>
@@ -40,12 +40,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.32549019607843138" green="0.21067034870588863" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="c2Y-Ue-hjU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0U4-1G-mOt"/>
-                            <constraint firstItem="c2Y-Ue-hjU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="3f2-Bk-GUx"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UzN-ZR-Psd" secondAttribute="trailing" id="6r7-j0-QTa"/>
+                            <constraint firstItem="c2Y-Ue-hjU" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="3f2-Bk-GUx"/>
                             <constraint firstItem="v8l-vD-V2t" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ZlP-td-eP9"/>
-                            <constraint firstItem="UzN-ZR-Psd" firstAttribute="top" secondItem="c2Y-Ue-hjU" secondAttribute="top" id="dNl-3g-lqf"/>
-                            <constraint firstItem="UzN-ZR-Psd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="eoF-vI-p95"/>
+                            <constraint firstItem="UzN-ZR-Psd" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="eoF-vI-p95"/>
+                            <constraint firstItem="UzN-ZR-Psd" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="rbI-zd-8no"/>
+                            <constraint firstItem="c2Y-Ue-hjU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="sy8-MP-gmU"/>
                             <constraint firstItem="v8l-vD-V2t" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="z3f-au-Y0V"/>
                         </constraints>
                     </view>

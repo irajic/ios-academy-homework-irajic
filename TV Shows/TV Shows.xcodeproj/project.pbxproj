@@ -12,6 +12,7 @@
 		4223D87E2875F7BF0015CC24 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4223D87D2875F7BF0015CC24 /* SceneDelegate.swift */; };
 		4223D8852875F7C30015CC24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4223D8842875F7C30015CC24 /* Assets.xcassets */; };
 		4223D8882875F7C30015CC24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4223D8862875F7C30015CC24 /* LaunchScreen.storyboard */; };
+		42301C68288708110031A180 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42301C67288708110031A180 /* LoginViewController.swift */; };
 		4286C2D0288613DD0011D489 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4286C2CF288613DD0011D489 /* Login.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -22,6 +23,7 @@
 		4223D8842875F7C30015CC24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4223D8872875F7C30015CC24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4223D8892875F7C30015CC24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42301C67288708110031A180 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4286C2CF288613DD0011D489 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		7C8624659BD1BAC2E991A511 /* Pods-TV Shows.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV Shows.debug.xcconfig"; path = "Target Support Files/Pods-TV Shows/Pods-TV Shows.debug.xcconfig"; sourceTree = "<group>"; };
 		98302D4407039777628DF557 /* Pods_TV_Shows.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TV_Shows.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +69,7 @@
 				4223D8862875F7C30015CC24 /* LaunchScreen.storyboard */,
 				4223D8892875F7C30015CC24 /* Info.plist */,
 				4286C2CF288613DD0011D489 /* Login.storyboard */,
+				42301C67288708110031A180 /* LoginViewController.swift */,
 			);
 			path = "TV Shows";
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42301C68288708110031A180 /* LoginViewController.swift in Sources */,
 				4223D87C2875F7BF0015CC24 /* AppDelegate.swift in Sources */,
 				4223D87E2875F7BF0015CC24 /* SceneDelegate.swift in Sources */,
 			);

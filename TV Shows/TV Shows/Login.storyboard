@@ -55,7 +55,7 @@
                                                 </constraints>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" textContentType="email"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dDh-Q9-qYK">
                                                 <rect key="frame" x="0.0" y="36" width="335" height="1"/>
@@ -76,7 +76,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="297" height="20.333333333333332"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
                                                     </textField>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" ambiguous="YES" image="eye.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ktf-Rn-9bA">
                                                         <rect key="frame" x="309" y="1.9999999999999982" width="26" height="16.333333333333336"/>
@@ -142,7 +142,7 @@
                                                     <color key="baseForegroundColor" red="0.32156862749999998" green="0.21176470589999999" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="loginButtonClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="sFO-61-CIv"/>
+                                                    <action selector="loginUser:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="7Ot-dW-4G4"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3K1-Dj-QXT">
@@ -175,6 +175,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="460-CM-zFD"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="fCE-oj-Jh3" id="SfD-aV-iTr"/>
+                        <outlet property="passwordTextField" destination="hhr-LC-wDM" id="uNa-MK-uHg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

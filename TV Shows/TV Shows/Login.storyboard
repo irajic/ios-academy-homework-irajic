@@ -152,7 +152,7 @@
                                                     <color key="baseForegroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="registerButtonClicked:" destination="Y6W-OH-hqX" eventType="touchUpOutside" id="9Hm-Gf-WhL"/>
+                                                    <action selector="registerButtonClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="JVU-hj-DvZ"/>
                                                 </connections>
                                             </button>
                                         </subviews>

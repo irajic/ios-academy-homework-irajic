@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import MBProgressHUD
+import Alamofire
 
 final class LoginViewController: UIViewController {
     
@@ -25,17 +27,20 @@ final class LoginViewController: UIViewController {
     }
     
     @IBAction func loginButtonClicked(_ sender: Any) {
-        let newloginVC = HomeViewController()
-        let navVC = UINavigationController(rootViewController: newloginVC)
         
-        present(navVC, animated: true)
+        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
+        let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! HomeViewController
+        navigationController?.pushViewController(homeViewController, animated: true)
+        
     }
     
-    @IBAction func registerButtonClicked(_ sender: UIButton) {
-        let newregisterVC = HomeViewController()
-        let navigationViewController = UINavigationController(rootViewController: newregisterVC)
+    @IBAction func registerButtonClicked(_ sender: Any) {
         
-        present(navigationViewController, animated: true)
+        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
+        let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! HomeViewController
+        navigationController?.pushViewController(homeViewController, animated: true)
+        
     }
+    
     
 }

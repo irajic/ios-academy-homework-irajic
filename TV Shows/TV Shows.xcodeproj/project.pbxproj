@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0B90910C961C70711948A2C6 /* Pods_TV_Shows.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98302D4407039777628DF557 /* Pods_TV_Shows.framework */; };
+		4214060E2888400F001543B0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4214060D2888400F001543B0 /* HomeViewController.swift */; };
+		421406102888401E001543B0 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4214060F2888401E001543B0 /* Home.storyboard */; };
 		4223D87C2875F7BF0015CC24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4223D87B2875F7BF0015CC24 /* AppDelegate.swift */; };
 		4223D87E2875F7BF0015CC24 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4223D87D2875F7BF0015CC24 /* SceneDelegate.swift */; };
 		4223D8852875F7C30015CC24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4223D8842875F7C30015CC24 /* Assets.xcassets */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4214060D2888400F001543B0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		4214060F2888401E001543B0 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		4223D8782875F7BF0015CC24 /* TV Shows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TV Shows.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4223D87B2875F7BF0015CC24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4223D87D2875F7BF0015CC24 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +74,8 @@
 				4223D8892875F7C30015CC24 /* Info.plist */,
 				4286C2CF288613DD0011D489 /* Login.storyboard */,
 				42301C67288708110031A180 /* LoginViewController.swift */,
+				4214060D2888400F001543B0 /* HomeViewController.swift */,
+				4214060F2888401E001543B0 /* Home.storyboard */,
 			);
 			path = "TV Shows";
 			sourceTree = "<group>";
@@ -154,6 +160,7 @@
 				4223D8882875F7C30015CC24 /* LaunchScreen.storyboard in Resources */,
 				4223D8852875F7C30015CC24 /* Assets.xcassets in Resources */,
 				4286C2D0288613DD0011D489 /* Login.storyboard in Resources */,
+				421406102888401E001543B0 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +216,7 @@
 				42301C68288708110031A180 /* LoginViewController.swift in Sources */,
 				4223D87C2875F7BF0015CC24 /* AppDelegate.swift in Sources */,
 				4223D87E2875F7BF0015CC24 /* SceneDelegate.swift in Sources */,
+				4214060E2888400F001543B0 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,4 +23,19 @@ final class LoginViewController: UIViewController {
     @IBAction func checkButton(_ sender: UIButton) {
         sender.isSelected.toggle()
     }
+    
+    @IBAction func loginButtonClicked(_ sender: Any) {
+        let newloginVC = HomeViewController()
+        let navVC = UINavigationController(rootViewController: newloginVC)
+        
+        present(navVC, animated: true)
+    }
+    
+    @IBAction func registerButtonClicked(_ sender: UIButton) {
+        let newregisterVC = HomeViewController()
+        let navigationViewController = UINavigationController(rootViewController: newregisterVC)
+        
+        present(navigationViewController, animated: true)
+    }
+    
 }

@@ -72,21 +72,22 @@
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="24" id="xOb-xX-tcs"/>
                                                 </constraints>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3e-rs-zfE">
-                                                <rect key="frame" x="20" y="427" width="24" height="31"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cK9-u4-LyQ">
+                                                <rect key="frame" x="20" y="427" width="24" height="24"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="24" id="99G-oH-YcN"/>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="24" id="IAV-CX-CX7"/>
-                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="24" id="tVF-jo-JoT"/>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="31" id="vau-ng-jqv"/>
-                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="24" id="wjN-ca-ph3"/>
-                                                    <constraint firstAttribute="height" constant="31" id="zc9-ub-H0b"/>
+                                                    <constraint firstAttribute="width" constant="24" id="Ims-2r-zu4"/>
+                                                    <constraint firstAttribute="height" constant="24" id="SfN-eh-g5O"/>
                                                 </constraints>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Button" image="rectangle" catalog="system">
+                                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="selected" image="checkmark.rectangle" catalog="system">
+                                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
                                                 <connections>
-                                                    <action selector="buttonClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="CBc-3b-Vn6"/>
+                                                    <action selector="checkButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="eVm-Cu-zeo"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -94,8 +95,8 @@
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="QQi-so-XLB" firstAttribute="top" secondItem="sEf-J8-2Vj" secondAttribute="top" constant="367" id="7oo-ne-fS8"/>
-                                            <constraint firstItem="C3e-rs-zfE" firstAttribute="leading" secondItem="sEf-J8-2Vj" secondAttribute="leading" constant="20" id="NdP-7Z-pAk"/>
-                                            <constraint firstItem="C3e-rs-zfE" firstAttribute="top" secondItem="sEf-J8-2Vj" secondAttribute="top" constant="427" id="TlS-fz-N4T"/>
+                                            <constraint firstItem="cK9-u4-LyQ" firstAttribute="top" secondItem="sEf-J8-2Vj" secondAttribute="top" constant="427" id="9dM-e3-yT2"/>
+                                            <constraint firstItem="cK9-u4-LyQ" firstAttribute="leading" secondItem="sEf-J8-2Vj" secondAttribute="leading" constant="20" id="EhV-cR-JKG"/>
                                             <constraint firstItem="LV2-qR-Vap" firstAttribute="leading" secondItem="sEf-J8-2Vj" secondAttribute="leading" constant="20" id="UUx-mB-3DC"/>
                                             <constraint firstItem="b5q-As-ETu" firstAttribute="top" secondItem="sEf-J8-2Vj" secondAttribute="top" constant="372" id="aL1-G8-sgW"/>
                                             <constraint firstItem="LV2-qR-Vap" firstAttribute="top" secondItem="sEf-J8-2Vj" secondAttribute="top" constant="299" id="dN3-p5-T5a"/>
@@ -131,19 +132,21 @@
                     </view>
                     <size key="freeformSize" width="438" height="900"/>
                     <connections>
-                        <outlet property="checkboxButton" destination="C3e-rs-zfE" id="S0X-hV-pwb"/>
+                        <outlet property="remeberMeButton" destination="cK9-u4-LyQ" id="SJb-7l-NaU"/>
                         <outlet property="scrollView" destination="vIE-tI-9sK" id="P3n-Pq-8WV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="34.782608695652179" y="81.026785714285708"/>
+            <point key="canvasLocation" x="942.02898550724649" y="80.706521739130437"/>
         </scene>
     </scenes>
     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
+        <image name="checkmark.rectangle" catalog="system" width="128" height="93"/>
         <image name="eye.fill" catalog="system" width="128" height="78"/>
         <image name="logo-white" width="162" height="38"/>
+        <image name="rectangle" catalog="system" width="128" height="93"/>
         <image name="splash-top-left" width="140" height="100"/>
         <image name="splash-top-right" width="202" height="266"/>
     </resources>

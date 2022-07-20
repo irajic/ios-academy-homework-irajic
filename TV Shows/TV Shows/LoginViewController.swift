@@ -11,15 +11,15 @@ final class LoginViewController: UIViewController {
     
     // MARK: -Outlets
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var labelView: UIView!
-    @IBOutlet weak var checkboxButton: UIButton!
+    @IBOutlet weak var remeberMeButton: UIButton!
     
     
     // MARK: -Lifecycle methodes
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         createStackView()
+        checkButton(remeberMeButton)
     }
     
     // MARK: -Methodes
@@ -72,15 +72,20 @@ final class LoginViewController: UIViewController {
     }
     
     // MARK: -Actions
-    @IBAction func buttonClicked(_ sender: UIButton) {
+    
+    @IBAction func checkButton(_ sender: UIButton) {
+        
         if(sender.isSelected == true) {
-            sender.setBackgroundImage(UIImage(named: "checkmark.rectangle"), for: UIControl.State.selected)
+            
+            sender.setBackgroundImage(UIImage(named: "checkbox"), for: .selected)
             sender.isSelected = false
+            
         }
         else {
-            sender.setBackgroundImage(UIImage(named: "rectangle"), for: UIControl.State.normal)
+            sender.setBackgroundImage(UIImage(named: "whiterectangle"), for: .normal)
             sender.isSelected = true
         }
+        
     }
     
 }

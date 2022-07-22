@@ -26,7 +26,7 @@
                                 <rect key="frame" x="106.66666666666669" y="158" width="162" height="38"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="wCo-XA-3ig">
-                                <rect key="frame" x="20" y="216.00000000000003" width="335" height="342.66666666666674"/>
+                                <rect key="frame" x="20" y="215.99999999999997" width="335" height="346.33333333333326"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ddo-if-1Ht">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="76.333333333333329"/>
@@ -67,25 +67,41 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="f7K-qs-jxp">
-                                        <rect key="frame" x="0.0" y="153.33333333333331" width="335" height="33.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="153.33333333333331" width="335" height="37"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="4aV-xu-9vs">
-                                                <rect key="frame" x="0.0" y="0.0" width="335" height="20.333333333333332"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="24"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" placeholder="Password" textAlignment="natural" minimumFontSize="17" background="eye.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hhr-LC-wDM">
-                                                        <rect key="frame" x="0.0" y="0.0" width="297" height="20.333333333333332"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" placeholder="Password" textAlignment="natural" minimumFontSize="17" background="eye.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hhr-LC-wDM">
+                                                        <rect key="frame" x="0.0" y="0.0" width="299" height="24"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
+                                                        <connections>
+                                                            <action selector="passwordVisibility:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="mIs-Bo-MuK"/>
+                                                        </connections>
                                                     </textField>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" ambiguous="YES" image="eye.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ktf-Rn-9bA">
-                                                        <rect key="frame" x="309" y="1.9999999999999982" width="26" height="16.333333333333336"/>
-                                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyo-j0-DMG">
+                                                        <rect key="frame" x="311" y="0.0" width="24" height="24"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="24" id="49p-AR-T01"/>
+                                                            <constraint firstAttribute="height" constant="24" id="xFe-ms-rbE"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="eye.fill" catalog="system">
+                                                            <color key="baseForegroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="passwordVisibility:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="duc-Je-nvR"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="kyo-j0-DMG" secondAttribute="trailing" constant="20" id="dQ5-zz-3Rk"/>
+                                                </constraints>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lwO-4K-Ot2">
-                                                <rect key="frame" x="0.0" y="32.333333333333371" width="335" height="1"/>
+                                                <rect key="frame" x="0.0" y="36" width="335" height="1"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="cWq-OC-b0K"/>
@@ -94,7 +110,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="kSd-X1-Kjr">
-                                        <rect key="frame" x="0.0" y="206.66666666666669" width="335" height="24"/>
+                                        <rect key="frame" x="0.0" y="210.33333333333331" width="335" height="24"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ex-5m-oIW">
                                                 <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
@@ -118,7 +134,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="m1w-EE-fV3">
-                                        <rect key="frame" x="0.0" y="250.66666666666669" width="335" height="92"/>
+                                        <rect key="frame" x="0.0" y="254.33333333333331" width="335" height="92"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NsD-Vh-dSv">
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="45"/>
@@ -142,17 +158,17 @@
                                                     <color key="baseForegroundColor" red="0.32156862749999998" green="0.21176470589999999" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="loginUser:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="7Ot-dW-4G4"/>
+                                                    <action selector="loginButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ONE-MJ-hRM"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3K1-Dj-QXT">
-                                                <rect key="frame" x="0.0" y="60.999999999999943" width="335" height="31"/>
+                                                <rect key="frame" x="0.0" y="61.000000000000057" width="335" height="31"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Register">
                                                     <color key="baseForegroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="registerButtonClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="JVU-hj-DvZ"/>
+                                                    <action selector="registerButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="QZw-S9-V3W"/>
                                                 </connections>
                                             </button>
                                         </subviews>

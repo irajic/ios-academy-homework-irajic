@@ -24,21 +24,17 @@ final class LoginViewController: UIViewController {
     
     // MARK: - Actions
     
-    @IBAction func checkButton(_ sender: UIButton) {
+    @IBAction private func checkButton(_ sender: UIButton) {
         sender.isSelected.toggle()
     }
     
-    @IBAction func passwordVisibility(_ sender: UIButton) {
-        if(sender.isSelected == true) {
-            passwordTextField.isSecureTextEntry = false
-        } else {
-            passwordTextField.isSecureTextEntry = true
-        }
-        sender.isSelected = !sender.isSelected
+    @IBAction private func passwordVisibility(_ sender: UIButton) {
+        sender.isSelected.toggle()
+        passwordTextField.isSecureTextEntry.toggle()
     }
     
     
-    @IBAction func registerButtonTapped(_ sender: UIButton) {
+    @IBAction private func registerButtonTapped(_ sender: UIButton) {
         guard
             let email = emailTextField.text,
             let password = passwordTextField.text,
@@ -50,7 +46,7 @@ final class LoginViewController: UIViewController {
         registerUserWith(email: email, password: password)
     }
     
-    @IBAction func loginButtonTapped(_ sender: UIButton) {
+    @IBAction private func loginButtonTapped(_ sender: UIButton) {
         guard
             let email = emailTextField.text,
             let password = passwordTextField.text,
@@ -80,9 +76,11 @@ final class LoginViewController: UIViewController {
                 encoder: JSONParameterEncoder.default
             )
             .validate()
-            .responseDecodable(of: UserResponse.self) { response in
+            .responseDecodable(of: UserResponse.self) { [weak self] response in
+                guard let self = self else { return }
+                MBProgressHUD.hide(for: self.view, animated: true)
                 switch response.result {
-                case .success(let userRoot):
+                case .success:
                     self.handleSuccess()
                 case .failure(let error):
                     print(error)
@@ -107,9 +105,11 @@ final class LoginViewController: UIViewController {
                 encoder: JSONParameterEncoder.default
             )
             .validate()
-            .responseDecodable(of: UserResponse.self) { response in
+            .responseDecodable(of: UserResponse.self) { [weak self] response in
+                guard let self = self else { return }
+                MBProgressHUD.hide(for: self.view, animated: true)
                 switch response.result {
-                case .success(let user):
+                case .success:
                     self.handleSuccess()
                 case .failure(let error):
                     print(error)
@@ -117,10 +117,10 @@ final class LoginViewController: UIViewController {
             }
     }
     
-    func handleSuccess() {
+    private func handleSuccess() {
         let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
         let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! HomeViewController
-        self.navigationController?.pushViewController(homeViewController, animated: true)
+        navigationController?.pushViewController(homeViewController, animated: true)
     }
 }
 

@@ -81,24 +81,20 @@
                                                             <action selector="passwordVisibility:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="mIs-Bo-MuK"/>
                                                         </connections>
                                                     </textField>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyo-j0-DMG">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k3y-2s-Sry">
                                                         <rect key="frame" x="311" y="0.0" width="24" height="24"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="24" id="49p-AR-T01"/>
-                                                            <constraint firstAttribute="height" constant="24" id="xFe-ms-rbE"/>
+                                                            <constraint firstAttribute="width" constant="24" id="U8r-Az-UUB"/>
+                                                            <constraint firstAttribute="height" constant="24" id="f33-Da-BaP"/>
                                                         </constraints>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" image="eye.fill" catalog="system">
-                                                            <color key="baseForegroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </buttonConfiguration>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" image="ic-visible"/>
+                                                        <state key="selected" image="ic-invisible"/>
                                                         <connections>
-                                                            <action selector="passwordVisibility:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="duc-Je-nvR"/>
+                                                            <action selector="passwordVisibility:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="TOC-UE-DmQ"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="kyo-j0-DMG" secondAttribute="trailing" constant="20" id="dQ5-zz-3Rk"/>
-                                                </constraints>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lwO-4K-Ot2">
                                                 <rect key="frame" x="0.0" y="36" width="335" height="1"/>
@@ -224,6 +220,8 @@
         <image name="eye.fill" catalog="system" width="128" height="78"/>
         <image name="ic-checkbox-selected" width="24" height="24"/>
         <image name="ic-checkbox-unselected" width="24" height="24"/>
+        <image name="ic-invisible" width="24" height="24"/>
+        <image name="ic-visible" width="24" height="24"/>
         <image name="logo-white" width="162" height="38"/>
         <image name="splash-top-left" width="140" height="100"/>
         <image name="splash-top-right" width="202" height="266"/>

@@ -189,6 +189,7 @@
                     <navigationItem key="navigationItem" id="460-CM-zFD"/>
                     <connections>
                         <outlet property="emailTextField" destination="fCE-oj-Jh3" id="SfD-aV-iTr"/>
+                        <outlet property="infoLabel" destination="5jO-H7-5id" id="VdN-tk-Xqg"/>
                         <outlet property="passwordTextField" destination="hhr-LC-wDM" id="uNa-MK-uHg"/>
                     </connections>
                 </viewController>

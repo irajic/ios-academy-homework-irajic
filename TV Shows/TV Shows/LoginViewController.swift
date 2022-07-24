@@ -15,6 +15,7 @@ final class LoginViewController: UIViewController {
     
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
+    @IBOutlet weak var infoLabel: UILabel!
     
     // MARK: - Lifecycle methodes
     
@@ -76,14 +77,15 @@ final class LoginViewController: UIViewController {
                 encoder: JSONParameterEncoder.default
             )
             .validate()
-            .responseDecodable(of: UserResponse.self) { [weak self] response in
+            .responseDecodable(of: UserResponse.self) { [weak self] dataResponse in
                 guard let self = self else { return }
                 MBProgressHUD.hide(for: self.view, animated: true)
-                switch response.result {
-                case .success:
-                    self.handleSuccess()
-                case .failure(let error):
-                    print(error)
+                switch dataResponse.result {
+                case .success (let userResponse):
+                    let headers = dataResponse.response?.headers.dictionary ?? [:]
+                    self.handleSuccesfulLogin(for: userResponse.user, headers: headers)
+                case .failure:
+                    self.handleFaliure()
                 }
             }
     }
@@ -105,22 +107,39 @@ final class LoginViewController: UIViewController {
                 encoder: JSONParameterEncoder.default
             )
             .validate()
-            .responseDecodable(of: UserResponse.self) { [weak self] response in
+            .responseDecodable(of: UserResponse.self) { [weak self] dataResponse in
                 guard let self = self else { return }
                 MBProgressHUD.hide(for: self.view, animated: true)
-                switch response.result {
-                case .success:
-                    self.handleSuccess()
-                case .failure(let error):
-                    print(error)
+                switch dataResponse.result {
+                case .success(let user):
+                    self.infoLabel.text = "Success: \(user)"
+                    self.loginUserWith(email: email, password: password)
+                case .failure:
+                    self.handleFaliure()
                 }
             }
     }
     
-    private func handleSuccess() {
+    private func handleSuccesfulLogin(for user: User, headers: [String: String]) {
+        guard let authInfo = try? AuthInfo(headers: headers) else {
+            infoLabel.text = "Missing headers"
+            return
+        }
+        infoLabel.text = "\(user)\n\n\(authInfo)"
+        self.callHomeScreen()
+    }
+    
+    private func callHomeScreen() {
         let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
         let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! HomeViewController
         navigationController?.pushViewController(homeViewController, animated: true)
+    }
+    
+    private func handleFaliure() {
+        let alertController = UIAlertController(title: nil, message: "Login / registration unseccesful", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(OKAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 

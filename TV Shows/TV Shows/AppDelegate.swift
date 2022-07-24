@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import MBProgressHUD
+import Alamofire
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

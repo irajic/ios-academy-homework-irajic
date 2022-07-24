@@ -124,17 +124,4 @@ final class LoginViewController: UIViewController {
     }
 }
 
-struct UserResponse: Decodable {
-    let user: User
-}
 
-struct User: Decodable {
-    let email: String
-    let id: String
-    let imageUrl: String?
-    
-    enum CodingKeys: String, CodingKey {
-        case email, id
-        case imageUrl = "image_url"
-    }
-}

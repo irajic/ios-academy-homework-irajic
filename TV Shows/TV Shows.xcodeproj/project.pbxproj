@@ -16,6 +16,7 @@
 		4223D8882875F7C30015CC24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4223D8862875F7C30015CC24 /* LaunchScreen.storyboard */; };
 		42301C68288708110031A180 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42301C67288708110031A180 /* LoginViewController.swift */; };
 		4286C2D0288613DD0011D489 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4286C2CF288613DD0011D489 /* Login.storyboard */; };
+		42E56141288D88270074E728 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E56140288D88270074E728 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		4223D8892875F7C30015CC24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42301C67288708110031A180 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4286C2CF288613DD0011D489 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		42E56140288D88270074E728 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7C8624659BD1BAC2E991A511 /* Pods-TV Shows.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV Shows.debug.xcconfig"; path = "Target Support Files/Pods-TV Shows/Pods-TV Shows.debug.xcconfig"; sourceTree = "<group>"; };
 		98302D4407039777628DF557 /* Pods_TV_Shows.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TV_Shows.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A36D34697412D0FE562BB1AF /* Pods-TV Shows.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV Shows.release.xcconfig"; path = "Target Support Files/Pods-TV Shows/Pods-TV Shows.release.xcconfig"; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				42301C67288708110031A180 /* LoginViewController.swift */,
 				4214060D2888400F001543B0 /* HomeViewController.swift */,
 				4214060F2888401E001543B0 /* Home.storyboard */,
+				42E56140288D88270074E728 /* User.swift */,
 			);
 			path = "TV Shows";
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 				42301C68288708110031A180 /* LoginViewController.swift in Sources */,
 				4223D87C2875F7BF0015CC24 /* AppDelegate.swift in Sources */,
 				4223D87E2875F7BF0015CC24 /* SceneDelegate.swift in Sources */,
+				42E56141288D88270074E728 /* User.swift in Sources */,
 				4214060E2888400F001543B0 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,7 +9,7 @@ import UIKit
 import MBProgressHUD
 import Alamofire
 
-final class LoginViewController: UIViewController {
+class LoginViewController: UIViewController {
     
     // MARK: - Outlets
     
@@ -61,7 +61,7 @@ final class LoginViewController: UIViewController {
     
     // MARK: - Methodes
     
-    private func loginUserWith(email: String, password: String) {
+    func loginUserWith(email: String, password: String) {
         let loginParameters = [
             "email": email,
             "password": password
@@ -120,18 +120,15 @@ final class LoginViewController: UIViewController {
             }
     }
     
-    private func handleSuccesfulLogin(for user: User, headers: [String: String]) {
+    func handleSuccesfulLogin(for user: User, headers: [String: String]) {
         guard let authInfo = try? AuthInfo(headers: headers) else {
             infoLabel.text = "Missing headers"
             return
         }
         infoLabel.text = "\(user)\n\n\(authInfo)"
-        self.callHomeScreen()
-    }
-    
-    private func callHomeScreen() {
-        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
+        let homeStoryboard = UIStoryboard(name: "Home", bundle: .main)
         let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! HomeViewController
+        homeViewController.authInfo = authInfo
         navigationController?.pushViewController(homeViewController, animated: true)
     }
     
@@ -142,5 +139,6 @@ final class LoginViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
 }
+ 
 
 

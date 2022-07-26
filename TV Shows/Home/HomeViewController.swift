@@ -56,7 +56,6 @@ private extension HomeViewController {
                 MBProgressHUD.hide(for: self.view, animated: true)
                 switch dataResponse.result {
                 case .success(let showsResponse):
-                    print("\(showsResponse.shows)")
                     self.items = showsResponse.shows
                     self.tableView.reloadData()
                 case .failure:
@@ -72,7 +71,7 @@ extension HomeViewController: UITableViewDataSource {
             withIdentifier: String(describing: ShowTableViewCell.self),
             for: indexPath
         ) as! ShowTableViewCell
-        let item = items[indexPath.row]
+        let item = items[indexPath.row].title
         cell.configure(with: item)
         return cell
     }

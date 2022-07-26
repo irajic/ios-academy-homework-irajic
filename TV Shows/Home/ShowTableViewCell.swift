@@ -17,7 +17,7 @@ class ShowTableViewCell: UITableViewCell {
         titleLabel.text = ""
     }
     
-    func configure(with item: Show) {
+    func configure(with item: String) {
         titleLabel.text = "\(item)"
     }
 }

@@ -66,7 +66,7 @@ extension ShowDetailsViewController: UITableViewDelegate {
         if indexPath.row == 0 {
             return 700
         } else {
-            return 110
+            return 100
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

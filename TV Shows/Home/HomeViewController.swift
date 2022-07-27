@@ -20,6 +20,8 @@ final class HomeViewController: UIViewController {
     private var items: [Show] = []
     private var currentPage: Int = 1
     private var itemsPerPage: Int = 20
+    private var numberOfItems: Int = 0
+    private var numberOfPages: Int = 0
     
     // MARK: - Outlets
     
@@ -58,7 +60,9 @@ private extension HomeViewController {
                 MBProgressHUD.hide(for: self.view, animated: true)
                 switch dataResponse.result {
                 case .success(let showsResponse):
-                    self.items = showsResponse.shows
+                    self.items.append(contentsOf: showsResponse.shows)
+                    self.numberOfItems = showsResponse.meta.pagination.count
+                    self.numberOfPages = showsResponse.meta.pagination.pages
                     self.tableView.reloadData()
                 case .failure:
                     print("Shows can not be added")
@@ -73,6 +77,7 @@ extension HomeViewController: UITableViewDataSource {
             withIdentifier: String(describing: ShowTableViewCell.self),
             for: indexPath
         ) as! ShowTableViewCell
+        
         let item = items[indexPath.row].title
         cell.configure(with: item)
         return cell
@@ -90,6 +95,16 @@ extension HomeViewController: UITableViewDataSource {
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 115
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == items.count - 1 {
+            if numberOfItems > items.count {
+                currentPage = currentPage + 1
+                getShows()
+                tableView.reloadData()
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

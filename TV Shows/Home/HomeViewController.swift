@@ -18,6 +18,8 @@ final class HomeViewController: UIViewController {
     // MARK: - Private properties
     
     private var items: [Show] = []
+    private var currentPage: Int = 1
+    private var itemsPerPage: Int = 20
     
     // MARK: - Outlets
     
@@ -47,7 +49,7 @@ private extension HomeViewController {
             .request(
                 "https://tv-shows.infinum.academy/shows",
                 method: .get,
-                parameters: ["page": "1", "items": "100"],
+                parameters: ["page": currentPage, "items": itemsPerPage],
                 headers: HTTPHeaders(self.authInfo?.headers ?? [:])
             )
             .validate()

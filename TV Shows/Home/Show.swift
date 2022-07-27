@@ -9,7 +9,7 @@ import Foundation
 
 struct ShowsResponse: Decodable {
     let shows: [Show]
-    // let metaData: Meta
+    let meta: Meta
 }
 
 struct Show: Decodable {
@@ -35,7 +35,9 @@ struct Meta: Decodable {
 }
 
 struct Pagination: Decodable {
+    let count: Int
     let page: Int
     let items: Int
+    let pages: Int
 }
 

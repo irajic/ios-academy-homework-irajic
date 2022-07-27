@@ -21,15 +21,9 @@ class ShowDetailsTableViewCell: UITableViewCell {
     }
     
     // MARK: - Methodes
-    
-    func configureDescriotion(with item: String?) {
+    func configureCell(with item: Show?) {
         guard let item = item else { return }
-        descriptionLabel.text = "\(item)"
+        descriptionLabel.text = item.description
+        reviewInfo.text = "\(item.numberOfReviews) reviews, \(String(describing: item.averageRating)) avarage"
     }
-    
-    func configureReviewInfo(with numberOfReviews: Int, avarage: Double?) {
-        guard let avarage = avarage else { return }
-        reviewInfo.text = "\(numberOfReviews) reviews, \(avarage) avarage"
-    }
-    
 }

@@ -8,11 +8,11 @@
 import Foundation
 
 struct ReviewsResponse: Decodable {
-    let review: [Review]
+    let reviews: [Review]
 }
 
 struct Review: Decodable {
-    let id: Int
+    let id: String
     let comment: String
     let rating: Int
     let showId: Int

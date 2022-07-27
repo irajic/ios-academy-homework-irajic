@@ -29,9 +29,11 @@ final class ShowDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let shows = shows else { return }
-        self.title = String(describing: shows.title)
+        //        guard let shows = shows else { return }
+        //        self.title = String(describing: shows.title)
+        title = shows?.title
         setUpTableView()
+        getReviews()
     }
     
     private func getReviews() {
@@ -39,22 +41,21 @@ final class ShowDetailsViewController: UIViewController {
         
         AF
             .request(
-                "https://tv-shows.infinum.academy/shows/{show_id}/reviews",
+                "https://tv-shows.infinum.academy/shows/\(showID)/reviews",
                 method: .get,
-                parameters: ["page": "1", "items": "100"],
+                parameters: ["page": "1", "items": "5"],
                 headers: HTTPHeaders(self.authInfo?.headers ?? [:])
             )
             .validate()
-            .responseDecodable(of: ReviewsResponse.self) { [weak self] dataResponse in
+            .responseDecodable(of: ReviewsResponse.self) { [weak self] reviewResponse in
                 guard let self = self else { return }
                 MBProgressHUD.hide(for: self.view, animated: true)
-                switch dataResponse.result {
+                switch reviewResponse.result {
                 case .success(let reviewsResponse):
-                    print("\(reviewsResponse.review)")
-                    self.items = reviewsResponse.review
+                    self.items = reviewsResponse.reviews
                     self.tableViewDetails.reloadData()
                 case .failure:
-                    print("Shows can not be added")
+                    print("Reviews can not be added")
                 }
             }
     }
@@ -62,13 +63,12 @@ final class ShowDetailsViewController: UIViewController {
 
 extension ShowDetailsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return 800
+        if indexPath.row == 0 {
+            return 700
         } else {
-            return 300
+            return 110
         }
     }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -84,31 +84,24 @@ extension ShowDetailsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       if indexPath.section == 0 {
+        if indexPath.section == 0 {
             let cell1 = tableViewDetails.dequeueReusableCell(
                 withIdentifier: String(describing: ShowDetailsTableViewCell.self),
                 for: indexPath
             ) as! ShowDetailsTableViewCell
-            let showInfo = shows?.description
-            let scoreInfo = shows?.averageRating
-            let reviews = shows!.numberOfReviews
-            cell1.configureDescriotion(with: showInfo)
-            cell1.configureReviewInfo(with: reviews, avarage: scoreInfo)
+            cell1.configureCell(with: shows)
             return cell1
-       } else {
-           let cell2 = tableViewDetails.dequeueReusableCell(
+        } else {
+            let cell2 = tableViewDetails.dequeueReusableCell(
                 withIdentifier: String(describing: ReviewDetailsTableViewCell.self),
                 for: indexPath
             ) as! ReviewDetailsTableViewCell
-            let email = items[indexPath.row].user.email
-            let review = items[indexPath.row].comment
-            cell2.configureUserEmail(with: email)
-            cell2.configureReviewInfo(with: review)
+            cell2.configureCell(with: items[indexPath.row])
             return cell2
         }
     }
 }
-    
+
 
 extension ShowDetailsViewController {
     func setUpTableView() {

@@ -22,12 +22,9 @@ class ReviewDetailsTableViewCell: UITableViewCell {
     
     // MARK: - Methodes
     
-    func configureUserEmail(with item: String) {
-        userEmailLabel.text = "\(item)"
-    }
-    
-    func configureReviewInfo(with review: String) {
-        reviewLabel.text = review
+    func configureCell(with item: Review) {
+        userEmailLabel.text = "\(item.user.email)"
+        reviewLabel.text = "\(item.comment)"
     }
     
 }

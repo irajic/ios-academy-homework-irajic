@@ -14,6 +14,7 @@ class ShowTableViewCell: UITableViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
     
     override func prepareForReuse() {
+        super.prepareForReuse()
         titleLabel.text = ""
     }
     

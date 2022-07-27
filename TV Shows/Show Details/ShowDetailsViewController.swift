@@ -24,16 +24,34 @@ final class ShowDetailsViewController: UIViewController {
     // MARK: - Private properties
     
     private var items: [Review] = []
+    private var currentPage: Int = 1
+    private var itemsPerPage: Int = 5
+    private var numberOfItems: Int = 0
+    private var numberOfPages: Int = 0
     
     // MARK: - Lifecycle methodes
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        guard let shows = shows else { return }
-        //        self.title = String(describing: shows.title)
         title = shows?.title
         setUpTableView()
         getReviews()
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func writeAReview(_ sender: Any) {
+        let writeReviewViewController = WriteReviewViewController()
+        writeReviewViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(
+            title: "Back",
+            style: .plain,
+            target: self,
+            action: #selector(writeReviewViewController.dismissSelf)
+        )
+        
+        let navigationController = UINavigationController(rootViewController: writeReviewViewController)
+        navigationController.modalPresentationStyle = .fullScreen
+        present(navigationController, animated: true)
     }
     
     private func getReviews() {
@@ -43,7 +61,7 @@ final class ShowDetailsViewController: UIViewController {
             .request(
                 "https://tv-shows.infinum.academy/shows/\(showID)/reviews",
                 method: .get,
-                parameters: ["page": "1", "items": "5"],
+                parameters: ["page": currentPage, "items": itemsPerPage],
                 headers: HTTPHeaders(self.authInfo?.headers ?? [:])
             )
             .validate()
@@ -52,7 +70,9 @@ final class ShowDetailsViewController: UIViewController {
                 MBProgressHUD.hide(for: self.view, animated: true)
                 switch reviewResponse.result {
                 case .success(let reviewsResponse):
-                    self.items = reviewsResponse.reviews
+                    self.items.append(contentsOf: reviewsResponse.reviews)
+                    self.numberOfItems = reviewsResponse.meta.pagination.count
+                    self.numberOfPages = reviewsResponse.meta.pagination.pages
                     self.tableViewDetails.reloadData()
                 case .failure:
                     print("Reviews can not be added")
@@ -65,12 +85,22 @@ extension ShowDetailsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
             return 700
-        } else {
-            return 100
         }
+        return 100
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == items.count - 1 {
+            if numberOfItems > items.count {
+                currentPage = currentPage + 1
+                getReviews()
+                tableView.reloadData()
+            }
+        }
     }
 }
 
@@ -105,6 +135,7 @@ extension ShowDetailsViewController: UITableViewDataSource {
 
 extension ShowDetailsViewController {
     func setUpTableView() {
+        tableViewDetails.estimatedRowHeight = 110
         tableViewDetails.rowHeight = UITableView.automaticDimension
         tableViewDetails.dataSource = self
         tableViewDetails.delegate = self

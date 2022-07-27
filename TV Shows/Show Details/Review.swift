@@ -9,6 +9,7 @@ import Foundation
 
 struct ReviewsResponse: Decodable {
     let reviews: [Review]
+    let meta: MetaR
 }
 
 struct Review: Decodable {
@@ -27,3 +28,13 @@ struct Review: Decodable {
     }
 }
 
+struct MetaR: Decodable {
+    let pagination: PaginationR
+}
+
+struct PaginationR: Decodable {
+    let count: Int
+    let page: Int
+    let items: Int
+    let pages: Int
+}

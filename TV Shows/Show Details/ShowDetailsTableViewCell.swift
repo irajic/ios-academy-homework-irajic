@@ -24,6 +24,9 @@ class ShowDetailsTableViewCell: UITableViewCell {
     func configureCell(with item: Show?) {
         guard let item = item else { return }
         descriptionLabel.text = item.description
+        if item.numberOfReviews == 0 {
+            reviewInfo.text = "No reviews yet."
+        }
         reviewInfo.text = "\(item.numberOfReviews) reviews, \(String(describing: item.averageRating)) avarage"
     }
 }

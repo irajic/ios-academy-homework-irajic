@@ -38,19 +38,21 @@ final class ShowDetailsViewController: UIViewController {
         getReviews()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let writeReviewViewController = segue.destination as! WriteReviewViewController
+        writeReviewViewController.delegate = self
+    }
+    
     // MARK: - Actions
     
     @IBAction func writeAReview(_ sender: Any) {
-        let writeReviewViewController = WriteReviewViewController()
-        writeReviewViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(
-            title: "Back",
-            style: .plain,
-            target: self,
-            action: #selector(writeReviewViewController.dismissSelf)
-        )
+        let writeReviewStoryboard = UIStoryboard(name: "WriteReview", bundle: .main)
+        let writeReviewViewController = writeReviewStoryboard.instantiateViewController(withIdentifier: "WriteReview") as! WriteReviewViewController
         
         let navigationController = UINavigationController(rootViewController: writeReviewViewController)
         navigationController.modalPresentationStyle = .fullScreen
+        writeReviewViewController.showID = showID
+        writeReviewViewController.authInfo = authInfo
         present(navigationController, animated: true)
     }
     
@@ -83,10 +85,11 @@ final class ShowDetailsViewController: UIViewController {
 
 extension ShowDetailsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            return 700
+        if indexPath.section == 0 {
+            return 650
+        } else {
+            return 100
         }
-        return 100
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -139,5 +142,11 @@ extension ShowDetailsViewController {
         tableViewDetails.rowHeight = UITableView.automaticDimension
         tableViewDetails.dataSource = self
         tableViewDetails.delegate = self
+    }
+}
+
+extension ShowDetailsViewController: WriteReviewControllerDelegate {
+    func newReview(_ review: [Review]) {
+        items.insert(contentsOf: review, at: 0)
     }
 }

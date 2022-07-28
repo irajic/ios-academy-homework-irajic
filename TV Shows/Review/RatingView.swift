@@ -3,7 +3,7 @@
 //  TV Shows
 //
 
-/*import UIKit
+import UIKit
 
 protocol RatingViewDelegate: AnyObject {
     func didChangeRating(_ rating: Int)
@@ -122,15 +122,22 @@ private extension RatingView {
         return button
     }
 
-    func setRating(_ number: Int) {
+    func setRating(_ _rating: Int) {
         // TODO: Your code goes here
-        if number > rating {
-            return
+        if rating > 5 {
+            print("That rating is not valid.")
+        } else {
+            print("\(rating)")
+            rating = _rating
+            print("\(rating)")
         }
     }
 
     func currentSelectedRating() -> Int {
         // TODO: Your code goes here
+        print("tugyy")
+        delegate?.didChangeRating(rating)
+        return 1
     }
 }
 
@@ -145,8 +152,8 @@ private extension RatingView {
             return
         }
         // TODO: Enter the correct index for the rating
-        let numberOfStars = currentSelectedRating()
-        setRating(numberOfStars)
+        print("check1")
+        setRating(buttonIndex)
         delegate?.didChangeRating(rating)
     }
-}*/
+}

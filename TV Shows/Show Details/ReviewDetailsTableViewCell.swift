@@ -8,11 +8,14 @@
 import UIKit
 
 class ReviewDetailsTableViewCell: UITableViewCell {
-
+    
     // MARK: - Outlets
     @IBOutlet weak var userEmailLabel: UILabel!
     @IBOutlet weak var reviewLabel: UILabel!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
     
     override func prepareForReuse() {
         super.prepareForReuse()

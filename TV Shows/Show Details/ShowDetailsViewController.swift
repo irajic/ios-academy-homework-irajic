@@ -145,8 +145,10 @@ extension ShowDetailsViewController {
     }
 }
 
+
+
 extension ShowDetailsViewController: WriteReviewControllerDelegate {
-    func newReview(_ review: [Review]) {
-        items.insert(contentsOf: review, at: 0)
+    func newReview(_ review: NewReview) {
+        tableViewDetails.reloadData()
     }
 }

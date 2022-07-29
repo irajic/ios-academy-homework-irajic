@@ -12,15 +12,20 @@ class ReviewDetailsTableViewCell: UITableViewCell {
     // MARK: - Outlets
     @IBOutlet weak var userEmailLabel: UILabel!
     @IBOutlet weak var reviewLabel: UILabel!
+    @IBOutlet weak var ratingView55: RatingView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        ratingView55.configure(withStyle: .small)
+        ratingView55.isEnabled = false
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         userEmailLabel.text = ""
         reviewLabel.text = ""
+
     }
     
     // MARK: - Methodes
@@ -28,6 +33,8 @@ class ReviewDetailsTableViewCell: UITableViewCell {
     func configureCell(with item: Review) {
         userEmailLabel.text = "\(item.user.email)"
         reviewLabel.text = "\(item.comment)"
+        
+        ratingView55.setRoundedRating(Double(item.rating))
     }
-    
 }
+

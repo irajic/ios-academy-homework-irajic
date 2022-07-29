@@ -27,6 +27,7 @@
 		42D5BE5528908FCC008F3FF5 /* ShowDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D5BE5428908FCC008F3FF5 /* ShowDetailsTableViewCell.swift */; };
 		42E56141288D88270074E728 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E56140288D88270074E728 /* User.swift */; };
 		42FB60082893CDEC006155DB /* WriteReview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42FB60072893CDEC006155DB /* WriteReview.storyboard */; };
+		42FB600A28947BFE006155DB /* NewReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FB600928947BFE006155DB /* NewReview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		42D5BE5428908FCC008F3FF5 /* ShowDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		42E56140288D88270074E728 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		42FB60072893CDEC006155DB /* WriteReview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WriteReview.storyboard; sourceTree = "<group>"; };
+		42FB600928947BFE006155DB /* NewReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReview.swift; sourceTree = "<group>"; };
 		7C8624659BD1BAC2E991A511 /* Pods-TV Shows.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV Shows.debug.xcconfig"; path = "Target Support Files/Pods-TV Shows/Pods-TV Shows.debug.xcconfig"; sourceTree = "<group>"; };
 		98302D4407039777628DF557 /* Pods_TV_Shows.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TV_Shows.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A36D34697412D0FE562BB1AF /* Pods-TV Shows.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV Shows.release.xcconfig"; path = "Target Support Files/Pods-TV Shows/Pods-TV Shows.release.xcconfig"; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				42CAEFB428928499003DA2C0 /* RatingView.swift */,
 				42C0E0E22891E7B00051CEA2 /* WriteReviewViewController.swift */,
 				42FB60072893CDEC006155DB /* WriteReview.storyboard */,
+				42FB600928947BFE006155DB /* NewReview.swift */,
 			);
 			path = Review;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				423C48E728913EE3009CD72D /* ReviewDetailsTableViewCell.swift in Sources */,
 				42D5BE5528908FCC008F3FF5 /* ShowDetailsTableViewCell.swift in Sources */,
 				42301C68288708110031A180 /* LoginViewController.swift in Sources */,
+				42FB600A28947BFE006155DB /* NewReview.swift in Sources */,
 				422DCAA2288E10C6001060A0 /* ShowTableViewCell.swift in Sources */,
 				42CAEFB528928499003DA2C0 /* RatingView.swift in Sources */,
 				423C48E928914303009CD72D /* Review.swift in Sources */,

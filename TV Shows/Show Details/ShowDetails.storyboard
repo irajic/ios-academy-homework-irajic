@@ -123,7 +123,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fkE-qB-Nlz">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fkE-qB-Nlz" customClass="RatingView" customModule="TV_Shows" customModuleProvider="target">
                                                     <rect key="frame" x="84" y="30" width="290" height="30"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
@@ -145,6 +145,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="ratingView55" destination="fkE-qB-Nlz" id="rSe-tk-OI7"/>
                                             <outlet property="reviewLabel" destination="4fP-1R-mlC" id="Vd6-je-lpr"/>
                                             <outlet property="userEmailLabel" destination="Rmw-Rp-XGT" id="c0Z-Xf-u7q"/>
                                         </connections>

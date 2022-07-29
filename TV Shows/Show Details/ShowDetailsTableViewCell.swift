@@ -32,9 +32,9 @@ class ShowDetailsTableViewCell: UITableViewCell {
     func configureCell(with item: Show?) {
         guard let item = item else { return }
         descriptionLabel.text = item.description
-        reviewInfo.text = "\(item.numberOfReviews) reviews, \(String(describing: item.averageRating)) avarage"
         let rating = item.averageRating
         guard let rating = rating else { return }
         ratingViewAvarage.setRoundedRating(rating)
+        reviewInfo.text = "\(item.numberOfReviews) reviews, \(String(describing: rating)) avarage"
     }
 }

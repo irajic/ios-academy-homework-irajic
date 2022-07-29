@@ -10,7 +10,7 @@ import MBProgressHUD
 import Alamofire
 
 protocol WriteReviewControllerDelegate: AnyObject {
-    func newReview(_ review: [Review])
+    func newReview(_ review: NewReview)
 }
 
 class WriteReviewViewController: UIViewController {
@@ -52,12 +52,7 @@ class WriteReviewViewController: UIViewController {
     // MARK: - Actions
     
    @IBAction func submitReview(_ sender: UIButton) {
-        guard
-            let comment = commentTF.text,
-            !comment.isEmpty
-        else {
-            return
-        }
+       guard let comment = commentTF.text else { return }
        saveComment(rating: ratingViewSelect.rating, comment: comment, showId: showID, authInf: authInfo)
     }
 }
@@ -77,18 +72,19 @@ private extension WriteReviewViewController {
                 "https://tv-shows.infinum.academy/reviews",
                 method: .post,
                 parameters: reviewParameters,
-                encoding: JSONEncoding.default,
                 headers: HTTPHeaders(self.authInfo?.headers ?? [:])
             )
             .validate()
-            .responseDecodable(of: ReviewsResponse.self) { [weak self] dataResponse in
+            .responseDecodable(of: NewReviewResponse.self) { [weak self] dataResponse in
                 guard let self = self else { return }
                 MBProgressHUD.hide(for: self.view, animated: true)
                 switch dataResponse.result {
                 case .success (let reviewResponse):
-                    self.delegate?.newReview(reviewResponse.reviews)
+                    print("objava prošla")
+                    self.delegate?.newReview(reviewResponse.review)
                     self.dismiss(animated: true, completion: nil)
                 case .failure:
+                    print("\(dataResponse)")
                     self.handleFaliure()
                 }
             }
@@ -103,8 +99,8 @@ private extension WriteReviewViewController {
 }
 
 extension WriteReviewViewController: UITableViewDelegate {
-    func submit(_ button: UIButton) -> Bool {
-        button.resignFirstResponder()
+    func submit(_ ratingView: RatingView) -> Bool {
+        ratingView.resignFirstResponder()
         return true
     }
 }

@@ -122,16 +122,16 @@ private extension RatingView {
         return button
     }
 
-    func setRating(_ _rating: Int) {
+    func setRating(_ rating1: Int) {
         // TODO: Your code goes here
-        var count: Int = 0
+        var num: Int = 0
         for button in ratingButtons {
-            if count > rating {
-                button.isSelected = false
+            if num <= rating1 {
+                button.isSelected = true
+                num += 1
             }
             else {
-                count += 1
-                button.isSelected = true
+                button.isSelected = false
             }
         }
     }
@@ -140,7 +140,7 @@ private extension RatingView {
         // TODO: Your code goes here
         var count: Int = 0
         for button in ratingButtons {
-            if !button.isSelected {
+            if button.isSelected {
                 count += 1
             }
         }

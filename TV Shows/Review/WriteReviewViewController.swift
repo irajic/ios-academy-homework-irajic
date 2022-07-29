@@ -53,7 +53,11 @@ class WriteReviewViewController: UIViewController {
     
    @IBAction func submitReview(_ sender: UIButton) {
        guard let comment = commentTF.text else { return }
-       saveComment(rating: ratingViewSelect.rating, comment: comment, showId: showID, authInf: authInfo)
+       if comment.isEmpty {
+           handleFaliure()
+       } else {
+           saveComment(rating: ratingViewSelect.rating, comment: comment, showId: showID, authInf: authInfo)
+       }
     }
 }
 
@@ -84,7 +88,6 @@ private extension WriteReviewViewController {
                     self.delegate?.newReview(reviewResponse.review)
                     self.dismiss(animated: true, completion: nil)
                 case .failure:
-                    print("\(dataResponse)")
                     self.handleFaliure()
                 }
             }
@@ -99,8 +102,8 @@ private extension WriteReviewViewController {
 }
 
 extension WriteReviewViewController: UITableViewDelegate {
-    func submit(_ ratingView: RatingView) -> Bool {
-        ratingView.resignFirstResponder()
+    func submit(_ view: ShowDetailsViewController) -> Bool {
+        view.resignFirstResponder()
         return true
     }
 }

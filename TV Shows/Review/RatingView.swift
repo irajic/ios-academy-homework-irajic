@@ -126,7 +126,7 @@ private extension RatingView {
         // TODO: Your code goes here
         var num: Int = 0
         for button in ratingButtons {
-            if num <= rating1 {
+            if num < rating1 {
                 button.isSelected = true
                 num += 1
             }
@@ -159,7 +159,7 @@ private extension RatingView {
             return
         }
         // TODO: Enter the correct index for the rating
-        setRating(buttonIndex)
+        setRating(buttonIndex+1)
         delegate?.didChangeRating(rating)
     }
 }

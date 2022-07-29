@@ -123,6 +123,7 @@ extension ShowDetailsViewController: UITableViewDataSource {
                 for: indexPath
             ) as! ShowDetailsTableViewCell
             cell1.configureCell(with: shows)
+            print("avarage \(shows?.averageRating)")
             return cell1
         } else {
             let cell2 = tableViewDetails.dequeueReusableCell(
@@ -144,8 +145,6 @@ extension ShowDetailsViewController {
         tableViewDetails.delegate = self
     }
 }
-
-
 
 extension ShowDetailsViewController: WriteReviewControllerDelegate {
     func newReview(_ review: NewReview) {

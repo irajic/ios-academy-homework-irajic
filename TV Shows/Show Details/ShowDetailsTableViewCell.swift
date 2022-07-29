@@ -35,6 +35,6 @@ class ShowDetailsTableViewCell: UITableViewCell {
         reviewInfo.text = "\(item.numberOfReviews) reviews, \(String(describing: item.averageRating)) avarage"
         let rating = item.averageRating
         guard let rating = rating else { return }
-        //ratingViewAvarage.setRoundedRating(rating)
+        ratingViewAvarage.setRoundedRating(rating)
     }
 }

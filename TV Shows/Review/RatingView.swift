@@ -124,20 +124,27 @@ private extension RatingView {
 
     func setRating(_ _rating: Int) {
         // TODO: Your code goes here
-        if rating > 5 {
-            print("That rating is not valid.")
-        } else {
-            print("\(rating)")
-            rating = _rating
-            print("\(rating)")
+        var count: Int = 0
+        for button in ratingButtons {
+            if count > rating {
+                button.isSelected = false
+            }
+            else {
+                count += 1
+                button.isSelected = true
+            }
         }
     }
 
     func currentSelectedRating() -> Int {
         // TODO: Your code goes here
-        print("tugyy")
-        delegate?.didChangeRating(rating)
-        return 1
+        var count: Int = 0
+        for button in ratingButtons {
+            if !button.isSelected {
+                count += 1
+            }
+        }
+        return count
     }
 }
 
@@ -152,7 +159,6 @@ private extension RatingView {
             return
         }
         // TODO: Enter the correct index for the rating
-        print("check1")
         setRating(buttonIndex)
         delegate?.didChangeRating(rating)
     }

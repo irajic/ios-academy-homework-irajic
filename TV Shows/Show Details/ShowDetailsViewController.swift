@@ -51,7 +51,7 @@ final class ShowDetailsViewController: UIViewController {
         
         let navigationController = UINavigationController(rootViewController: writeReviewViewController)
         navigationController.modalPresentationStyle = .fullScreen
-        writeReviewViewController.showID = showID
+        writeReviewViewController.showID = Int(showID)!
         writeReviewViewController.authInfo = authInfo
         present(navigationController, animated: true)
     }

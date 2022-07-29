@@ -24,7 +24,7 @@ class WriteReviewViewController: UIViewController {
     // MARK: - Public properties
     
     var authInfo: AuthInfo? = nil
-    var showID: String = ""
+    var showID: Int = 0
     var shows: Show?
     weak var delegate: WriteReviewControllerDelegate?
     
@@ -58,18 +58,17 @@ class WriteReviewViewController: UIViewController {
         else {
             return
         }
-       let rating = String(ratingViewSelect.rating)
-        saveComment(rating: rating, comment: comment, showId: showID, authInf: authInfo, show: shows)
+       saveComment(rating: ratingViewSelect.rating, comment: comment, showId: showID, authInf: authInfo)
     }
 }
 
 private extension WriteReviewViewController {
-    private func saveComment(rating: String, comment: String, showId: String, authInf: AuthInfo?, show: Show?) {
+    private func saveComment(rating: Int, comment: String, showId: Int, authInf: AuthInfo?) {
         let reviewParameters = [
             "rating": rating,
             "comment": comment,
             "show_id": showId
-        ]
+        ] as [String : Any]
         
         MBProgressHUD.showAdded(to: view, animated: true)
         
@@ -78,7 +77,7 @@ private extension WriteReviewViewController {
                 "https://tv-shows.infinum.academy/reviews",
                 method: .post,
                 parameters: reviewParameters,
-                encoder: JSONParameterEncoder.default,
+                encoding: JSONEncoding.default,
                 headers: HTTPHeaders(self.authInfo?.headers ?? [:])
             )
             .validate()
@@ -88,7 +87,7 @@ private extension WriteReviewViewController {
                 switch dataResponse.result {
                 case .success (let reviewResponse):
                     self.delegate?.newReview(reviewResponse.reviews)
-                    self.dismissSelf()
+                    self.dismiss(animated: true, completion: nil)
                 case .failure:
                     self.handleFaliure()
                 }
@@ -109,3 +108,5 @@ extension WriteReviewViewController: UITableViewDelegate {
         return true
     }
 }
+
+

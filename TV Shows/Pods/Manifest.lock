@@ -1,24 +1,28 @@
 PODS:
   - Alamofire (5.6.2)
+  - KeychainAccess (4.2.2)
   - Kingfisher (7.3.1)
   - MBProgressHUD (1.2.0)
 
 DEPENDENCIES:
   - Alamofire
+  - KeychainAccess
   - Kingfisher (~> 7.0)
   - MBProgressHUD
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - KeychainAccess
     - Kingfisher
     - MBProgressHUD
 
 SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
+  KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
   Kingfisher: f411ab4902e733fc0c40522920fb5a236d7a7334
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
 
-PODFILE CHECKSUM: 225717259dbdab2edaf85cdd1f32c65aca457f32
+PODFILE CHECKSUM: e310f3ed903a26f35e833c4f610e79e799489916
 
 COCOAPODS: 1.11.3

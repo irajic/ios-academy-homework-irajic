@@ -117,25 +117,43 @@ extension ShowDetailsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if shows?.numberOfReviews != 0 {
+           if indexPath.section == 0 {
+                let cell1 = tableViewDetails.dequeueReusableCell(
+                    withIdentifier: String(describing: ShowDetailsTableViewCell.self),
+                    for: indexPath
+                ) as! ShowDetailsTableViewCell
+                cell1.configureCell(with: shows)
+                return cell1
+            } else {
+                let cell2 = tableViewDetails.dequeueReusableCell(
+                    withIdentifier: String(describing: ReviewDetailsTableViewCell.self),
+                    for: indexPath
+                ) as! ReviewDetailsTableViewCell
+                cell2.configureCell(with: items[indexPath.row])
+                return cell2
+            }
+        } else {
         if indexPath.section == 0 {
             let cell1 = tableViewDetails.dequeueReusableCell(
                 withIdentifier: String(describing: ShowDetailsTableViewCell.self),
                 for: indexPath
             ) as! ShowDetailsTableViewCell
             cell1.configureCell(with: shows)
-            print("avarage \(shows?.averageRating)")
             return cell1
         } else {
             let cell2 = tableViewDetails.dequeueReusableCell(
                 withIdentifier: String(describing: ReviewDetailsTableViewCell.self),
                 for: indexPath
             ) as! ReviewDetailsTableViewCell
-            cell2.configureCell(with: items[indexPath.row])
+            cell2.isHidden = true
+            numberOfItems = 0
+            numberOfPages = 0
             return cell2
         }
     }
 }
-
+}
 
 extension ShowDetailsViewController {
     func setUpTableView() {
@@ -151,3 +169,4 @@ extension ShowDetailsViewController: WriteReviewControllerDelegate {
         tableViewDetails.reloadData()
     }
 }
+

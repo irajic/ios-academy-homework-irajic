@@ -32,15 +32,28 @@ class ShowDetailsTableViewCell: UITableViewCell {
     
     // MARK: - Methodes
     func configureCell(with item: Show?) {
-        showImageBig.kf.setImage(
-            with: item?.imageUrl,
-            placeholder: UIImage(named: "ic-show-placeholder-vertical")
-        )
-        guard let item = item else { return }
-        descriptionLabel.text = item.description
-        let rating = item.averageRating
-        guard let rating = rating else { return }
-        ratingViewAvarage.setRoundedRating(rating)
-        reviewInfo.text = "\(item.numberOfReviews) reviews, \(String(describing: rating)) avarage"
+        if(item?.numberOfReviews != 0) {
+            showImageBig.kf.setImage(
+                with: item?.imageUrl,
+                placeholder: UIImage(named: "ic-show-placeholder-vertical")
+            )
+            guard let item = item else { return }
+            descriptionLabel.text = item.description
+            let rating = item.averageRating
+            guard let rating = rating else { return }
+            ratingViewAvarage.setRoundedRating(rating)
+            reviewInfo.text = "\(item.numberOfReviews) reviews, \(String(describing: rating)) avarage"
+        } else {
+            showImageBig.kf.setImage(
+                with: item?.imageUrl,
+                placeholder: UIImage(named: "ic-show-placeholder-vertical")
+            )
+            guard let item = item else { return }
+            descriptionLabel.text = item.description
+            reviewInfo.center.x = self.center.x
+            reviewInfo.text = "No reviews yet"
+            reviewInfo.textAlignment = .center
+            ratingViewAvarage.isHidden = true
+        }
     }
 }

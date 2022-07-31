@@ -33,9 +33,17 @@ final class ShowDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         title = shows?.title
         setUpTableView()
         getReviews()
+        
+        tableViewDetails.refreshControl = UIRefreshControl()
+        tableViewDetails.refreshControl?.addTarget(
+            self,
+            action: #selector(didPullToRefresh),
+            for: .valueChanged
+        )
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -56,7 +64,14 @@ final class ShowDetailsViewController: UIViewController {
         present(navigationController, animated: true)
     }
     
+    // MARK: - Methodes
+    
+    @objc private func didPullToRefresh() {
+        getReviews()
+    }
+    
     private func getReviews() {
+        items.removeAll()
         MBProgressHUD.showAdded(to: view, animated: true)
         
         AF
@@ -75,7 +90,10 @@ final class ShowDetailsViewController: UIViewController {
                     self.items.append(contentsOf: reviewsResponse.reviews)
                     self.numberOfItems = reviewsResponse.meta.pagination.count
                     self.numberOfPages = reviewsResponse.meta.pagination.pages
-                    self.tableViewDetails.reloadData()
+                    DispatchQueue.main.async {
+                        self.tableViewDetails.refreshControl?.endRefreshing()
+                        self.tableViewDetails.reloadData()
+                    }
                 case .failure:
                     print("Reviews can not be added")
                 }

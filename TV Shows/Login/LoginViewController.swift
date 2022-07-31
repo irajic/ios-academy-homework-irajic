@@ -85,7 +85,8 @@ class LoginViewController: UIViewController {
                     let headers = dataResponse.response?.headers.dictionary ?? [:]
                     self.handleSuccesfulLogin(for: userResponse.user, headers: headers)
                 case .failure:
-                    self.handleFaliure()
+                    self.shakeTextField()
+                    //self.handleFaliure()
                 }
             }
     }
@@ -115,7 +116,8 @@ class LoginViewController: UIViewController {
                     self.infoLabel.text = "Success: \(user)"
                     self.loginUserWith(email: email, password: password)
                 case .failure:
-                    self.handleFaliure()
+                    self.shakeTextField()
+                    //self.handleFaliure()
                 }
             }
     }
@@ -140,5 +142,19 @@ class LoginViewController: UIViewController {
     }
 }
  
-
+private extension LoginViewController {
+    private func shakeTextField() {
+        let newTransforme = CGAffineTransform(translationX: 15, y: 0)
+        
+        UIView.animate(withDuration: 0.3) {
+            UIView.modifyAnimations(withRepeatCount: 2, autoreverses: true) {
+                self.passwordTextField.transform = newTransforme
+                self.emailTextField.transform = newTransforme
+            }
+        } completion: { _ in
+            self.emailTextField.transform = .identity
+            self.passwordTextField.transform = .identity
+        }
+    }
+}
 

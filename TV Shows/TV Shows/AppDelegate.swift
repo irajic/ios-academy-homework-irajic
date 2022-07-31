@@ -8,6 +8,7 @@
 import UIKit
 import MBProgressHUD
 import Alamofire
+import Kingfisher
 
  @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ShowDetailsTableViewCell: UITableViewCell {
     
@@ -14,6 +15,7 @@ class ShowDetailsTableViewCell: UITableViewCell {
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var reviewInfo: UILabel!
     @IBOutlet weak var ratingViewAvarage: RatingView!
+    @IBOutlet private weak var showImageBig: UIImageView!
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -30,6 +32,10 @@ class ShowDetailsTableViewCell: UITableViewCell {
     
     // MARK: - Methodes
     func configureCell(with item: Show?) {
+        showImageBig.kf.setImage(
+            with: item?.imageUrl,
+            placeholder: UIImage(named: "ic-show-placeholder-vertical")
+        )
         guard let item = item else { return }
         descriptionLabel.text = item.description
         let rating = item.averageRating

@@ -8,6 +8,7 @@
 import UIKit
 import MBProgressHUD
 import Alamofire
+import Kingfisher
 
 final class HomeViewController: UIViewController {
     
@@ -78,7 +79,7 @@ extension HomeViewController: UITableViewDataSource {
             for: indexPath
         ) as! ShowTableViewCell
         
-        let item = items[indexPath.row].title
+        let item = items[indexPath.row]
         cell.configure(with: item)
         return cell
     }

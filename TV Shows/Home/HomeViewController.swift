@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 import MBProgressHUD
 import Alamofire
 import Kingfisher
@@ -36,10 +37,32 @@ final class HomeViewController: UIViewController {
         self.title = "Shows"
         self.navigationItem.setHidesBackButton(true, animated: false)
         getShows()
+        
+        let profileDetailsItem = UIBarButtonItem(
+            image: UIImage(named: "ic-profile"),
+            style: .plain,
+            target: self,
+            action: #selector(profileDetailsActionHandler)
+        )
+        profileDetailsItem.tintColor = UIColor.black
+        navigationItem.rightBarButtonItem = profileDetailsItem
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    // MARK: - Methodes
+    
+    @objc
+    private func profileDetailsActionHandler() {
+        let profileStoryboard = UIStoryboard(name: "ProfileDetails", bundle: nil)
+        let profileViewController = profileStoryboard.instantiateViewController(withIdentifier: "Profile") as! ProfileViewController
+        
+        let navigationController = UINavigationController(rootViewController: profileViewController)
+        navigationController.modalPresentationStyle = .fullScreen
+        profileViewController.authInfo = authInfo
+        present(navigationController, animated: true)
     }
 }
 

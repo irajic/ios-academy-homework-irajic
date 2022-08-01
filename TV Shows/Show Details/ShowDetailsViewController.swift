@@ -72,6 +72,7 @@ final class ShowDetailsViewController: UIViewController {
     
     private func getReviews() {
         items.removeAll()
+        
         MBProgressHUD.showAdded(to: view, animated: true)
         
         AF

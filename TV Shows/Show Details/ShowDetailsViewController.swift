@@ -88,7 +88,9 @@ extension ShowDetailsViewController: UITableViewDelegate {
         if indexPath.section == 0 {
             return 650
         } else {
-            return 100
+            tableViewDetails.estimatedRowHeight = 150
+            tableViewDetails.rowHeight = UITableView.automaticDimension
+            return tableViewDetails.rowHeight
         }
     }
     
@@ -139,7 +141,7 @@ extension ShowDetailsViewController: UITableViewDataSource {
 
 extension ShowDetailsViewController {
     func setUpTableView() {
-        tableViewDetails.estimatedRowHeight = 110
+        tableViewDetails.estimatedRowHeight = 650
         tableViewDetails.rowHeight = UITableView.automaticDimension
         tableViewDetails.dataSource = self
         tableViewDetails.delegate = self
@@ -147,7 +149,7 @@ extension ShowDetailsViewController {
 }
 
 extension ShowDetailsViewController: WriteReviewControllerDelegate {
-    func newReview(_ review: NewReview) {
+    func didAddNewReview(_ review: NewReview) {
         tableViewDetails.reloadData()
     }
 }

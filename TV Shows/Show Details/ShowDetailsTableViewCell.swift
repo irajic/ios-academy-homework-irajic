@@ -19,6 +19,7 @@ class ShowDetailsTableViewCell: UITableViewCell {
         super.prepareForReuse()
         descriptionLabel.text = ""
         reviewInfo.text = ""
+        ratingViewAvarage.setRoundedRating(0)
     }
     
     override func awakeFromNib() {

@@ -10,14 +10,14 @@ import MBProgressHUD
 import Alamofire
 
 protocol WriteReviewControllerDelegate: AnyObject {
-    func newReview(_ review: NewReview)
+    func didAddNewReview(_ review: NewReview)
 }
 
 class WriteReviewViewController: UIViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var commentTF: UITextField!
+    @IBOutlet weak var commentTF: UITextView!
     @IBOutlet weak var ratingViewSelect: RatingView!
     
     
@@ -85,7 +85,7 @@ private extension WriteReviewViewController {
                 switch dataResponse.result {
                 case .success (let reviewResponse):
                     print("objava prošla")
-                    self.delegate?.newReview(reviewResponse.review)
+                    self.delegate?.didAddNewReview(reviewResponse.review)
                     self.dismiss(animated: true, completion: nil)
                 case .failure:
                     self.handleFaliure()

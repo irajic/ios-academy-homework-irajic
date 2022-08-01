@@ -114,10 +114,11 @@
                                                     <color key="textColor" systemColor="systemGray4Color"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fP-1R-mlC">
-                                                    <rect key="frame" x="20" y="71" width="374" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" showsExpansionTextWhenTruncated="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fP-1R-mlC">
+                                                    <rect key="frame" x="20" y="71" width="374" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="350" id="MFD-91-wYV"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="fX9-L8-6ds"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -142,6 +143,7 @@
                                                 <constraint firstItem="fkE-qB-Nlz" firstAttribute="leading" secondItem="Ocj-eL-bTr" secondAttribute="trailing" constant="15" id="hSd-Rh-a9f"/>
                                                 <constraint firstItem="Rmw-Rp-XGT" firstAttribute="leading" secondItem="Ocj-eL-bTr" secondAttribute="trailing" constant="20" id="hT5-pg-8rg"/>
                                                 <constraint firstItem="4fP-1R-mlC" firstAttribute="leading" secondItem="4FM-ih-BXw" secondAttribute="leading" constant="20" id="nZo-Ie-bav"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="4fP-1R-mlC" secondAttribute="bottom" constant="10" id="tEz-ic-SQK"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

@@ -8,7 +8,6 @@
 import UIKit
 import MBProgressHUD
 import Alamofire
-import KeychainAccess
 
 class LoginViewController: UIViewController {
     
@@ -17,6 +16,10 @@ class LoginViewController: UIViewController {
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet weak var infoLabel: UILabel!
+    
+    // MARK: - Private Properties
+    
+    private var rememberMeFlag: Bool = false
     
     // MARK: - Lifecycle methodes
     
@@ -28,6 +31,7 @@ class LoginViewController: UIViewController {
     
     @IBAction private func checkButton(_ sender: UIButton) {
         sender.isSelected.toggle()
+        rememberMeFlag = !rememberMeFlag
     }
     
     @IBAction private func passwordVisibility(_ sender: UIButton) {
@@ -128,6 +132,13 @@ class LoginViewController: UIViewController {
             infoLabel.text = "Missing headers"
             return
         }
+        if rememberMeFlag {
+            let encoder = PropertyListEncoder()
+            if let encoded = try? encoder.encode(authInfo) {
+                UserDefaults.standard.set(encoded, forKey: "authInfo")
+            }
+        }
+        
         infoLabel.text = "\(user)\n\n\(authInfo)"
         let homeStoryboard = UIStoryboard(name: "Home", bundle: .main)
         let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! HomeViewController

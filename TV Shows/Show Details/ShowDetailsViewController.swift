@@ -67,12 +67,12 @@ final class ShowDetailsViewController: UIViewController {
     // MARK: - Methodes
     
     @objc private func didPullToRefresh() {
+        items.removeAll()
+        currentPage = 1
         getReviews()
     }
     
     private func getReviews() {
-        items.removeAll()
-        
         MBProgressHUD.showAdded(to: view, animated: true)
         
         AF

@@ -8,6 +8,7 @@
 import UIKit
 import MBProgressHUD
 import Alamofire
+import WebKit
 
 final class HomeViewController: UIViewController {
     
@@ -22,6 +23,7 @@ final class HomeViewController: UIViewController {
     private var itemsPerPage: Int = 20
     private var numberOfItems: Int = 0
     private var numberOfPages: Int = 0
+    private let webView = WKWebView()
     
     // MARK: - Outlets
     
@@ -35,6 +37,7 @@ final class HomeViewController: UIViewController {
         self.title = "Shows"
         self.navigationItem.setHidesBackButton(true, animated: false)
         getShows()
+        webView.navigationDelegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -98,7 +101,10 @@ extension HomeViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == items.count - 1 {
+        guard indexPath.row == items.count - 1  else {
+            return
+        }
+        if !webView.isLoading {
             if numberOfItems > items.count {
                 currentPage = currentPage + 1
                 getShows()
@@ -126,6 +132,12 @@ private extension HomeViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+    }
+}
+
+extension HomeViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("loaded")
     }
 }
 

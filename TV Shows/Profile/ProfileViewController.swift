@@ -15,6 +15,7 @@ final class ProfileViewController: UIViewController {
     // MARK: - Public properties
     
     var authInfo: AuthInfo? = nil
+    let imagePicker = UIImagePickerController()
     
     // MARK: - Private properties
     
@@ -33,6 +34,8 @@ final class ProfileViewController: UIViewController {
         
         addCloseButton()
         fetchUserInfo()
+        
+        imagePicker.delegate = self
     }
     
     // MARK: - Methodes
@@ -45,6 +48,12 @@ final class ProfileViewController: UIViewController {
     }
     
     // MARK: - Actions
+    
+    @IBAction func loadImageButtonTapped(_ sender: UIButton) {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
+    }
     
     @IBAction func logputButtonActionHandler(_ sender: UIButton) {
         dismiss(animated: true, completion:  {
@@ -91,5 +100,15 @@ extension ProfileViewController: UINavigationControllerDelegate {
     func didLogout(_ navigationController: UINavigationController) -> Bool {
         navigationController.resignFirstResponder()
         return true
+    }
+}
+
+extension ProfileViewController: UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            profilePhoto.contentMode = .scaleAspectFit
+            profilePhoto.image = pickedImage
+        }
+        dismiss(animated: true, completion: nil)
     }
 }

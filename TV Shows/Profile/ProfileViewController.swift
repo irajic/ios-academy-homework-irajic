@@ -94,6 +94,39 @@ private extension ProfileViewController {
                 }
             }
     }
+    
+    private func storeImage(_ image: UIImage) {
+        guard let imageData = image.jpegData(compressionQuality: 0.9) else { return }
+        let requestData = MultipartFormData()
+        requestData.append(
+            imageData,
+            withName: "image",
+            fileName: "image.jpg",
+            mimeType: "image/jpg"
+        )
+        
+        AF
+            .upload(
+                multipartFormData: requestData,
+                to: "https://tv-shows.infinum.academy/users",
+                method: .put,
+                headers: HTTPHeaders(self.authInfo?.headers ?? [:])
+            )
+            .validate(statusCode: 200..<422)
+            .responseDecodable(of: UserResponse.self) {[weak self] dataResponse in
+                guard let self = self else { return }
+                print("\(dataResponse.self)")
+                switch dataResponse.result {
+                case .success(let userResponse):
+                    self.profilePhoto.kf.setImage(
+                        with: userResponse.user.imageUrl,
+                        placeholder: UIImage(named: "ic-profile-placeholder")
+                    )
+                case .failure:
+                    print("Image is not stored.")
+                }
+            }
+    }
 }
 
 extension ProfileViewController: UINavigationControllerDelegate {
@@ -110,5 +143,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate {
             profilePhoto.image = pickedImage
         }
         dismiss(animated: true, completion: nil)
+        guard let image = profilePhoto.image else { return }
+        storeImage(image)
     }
 }

@@ -33,15 +33,6 @@
                                     <constraint firstAttribute="width" constant="80" id="vvq-kW-ZrU"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Profile Photo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1pb-yS-MvX">
-                                <rect key="frame" x="130" y="154" width="196" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="196" id="Kq0-dN-j5D"/>
-                                    <constraint firstAttribute="height" constant="22" id="oO8-4N-huA"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.32156862749999998" green="0.21176470589999999" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ON-7M-gdd">
                                 <rect key="frame" x="51" y="259" width="312" height="45"/>
                                 <constraints>
@@ -59,15 +50,26 @@
                                     <action selector="logputButtonActionHandler:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="EgB-gi-I9I"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UsI-sE-SxX">
+                                <rect key="frame" x="130" y="153" width="196" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="a0l-ek-MBV"/>
+                                    <constraint firstAttribute="width" constant="196" id="xki-bP-tEI"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Change Profile Photo">
+                                    <color key="baseForegroundColor" red="0.32156862749999998" green="0.21176470589999999" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </buttonConfiguration>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="1pb-yS-MvX" firstAttribute="leading" secondItem="Zst-vl-LPO" secondAttribute="trailing" constant="20" id="3HS-X8-VzO"/>
-                            <constraint firstItem="1pb-yS-MvX" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="110" id="GGF-jy-qqw"/>
                             <constraint firstItem="6ON-7M-gdd" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="LCy-Tk-Piv"/>
+                            <constraint firstItem="UsI-sE-SxX" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="109" id="U50-Md-X6p"/>
                             <constraint firstItem="Zst-vl-LPO" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="30" id="dUd-Al-Bl9"/>
                             <constraint firstItem="PJ3-mo-42q" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="25" id="dX2-u4-TID"/>
+                            <constraint firstItem="UsI-sE-SxX" firstAttribute="leading" secondItem="Zst-vl-LPO" secondAttribute="trailing" constant="20" id="dyg-RE-6bS"/>
                             <constraint firstItem="PJ3-mo-42q" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="jPP-Ok-6OH"/>
                             <constraint firstItem="Zst-vl-LPO" firstAttribute="top" secondItem="PJ3-mo-42q" secondAttribute="bottom" constant="40" id="ldc-jH-mET"/>
                             <constraint firstItem="6ON-7M-gdd" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="215" id="pmp-WD-2lZ"/>

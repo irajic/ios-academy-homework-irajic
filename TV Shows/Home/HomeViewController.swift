@@ -23,7 +23,7 @@ final class HomeViewController: UIViewController {
     private var itemsPerPage: Int = 20
     private var numberOfItems: Int = 0
     private var numberOfPages: Int = 0
-    private let webView = WKWebView()
+    private var isLoadingShows = false
     
     // MARK: - Outlets
     
@@ -37,7 +37,6 @@ final class HomeViewController: UIViewController {
         self.title = "Shows"
         self.navigationItem.setHidesBackButton(true, animated: false)
         getShows()
-        webView.navigationDelegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,6 +48,7 @@ private extension HomeViewController {
     
     private func getShows() {
         MBProgressHUD.showAdded(to: view, animated: true)
+        isLoadingShows = true
         
         AF
             .request(
@@ -60,16 +60,18 @@ private extension HomeViewController {
             .validate()
             .responseDecodable(of: ShowsResponse.self) { [weak self] dataResponse in
                 guard let self = self else { return }
-                MBProgressHUD.hide(for: self.view, animated: true)
                 switch dataResponse.result {
                 case .success(let showsResponse):
                     self.items.append(contentsOf: showsResponse.shows)
                     self.numberOfItems = showsResponse.meta.pagination.count
                     self.numberOfPages = showsResponse.meta.pagination.pages
                     self.tableView.reloadData()
+                    self.isLoadingShows = true
                 case .failure:
                     print("Shows can not be added")
                 }
+                MBProgressHUD.hide(for: self.view, animated: true)
+                self.isLoadingShows = false
             }
     }
 }
@@ -104,13 +106,15 @@ extension HomeViewController: UITableViewDelegate {
         guard indexPath.row == items.count - 1  else {
             return
         }
-        if !webView.isLoading {
-            if numberOfItems > items.count {
+            if
+                numberOfItems > items.count,
+                !isLoadingShows
+        
+        {
                 currentPage = currentPage + 1
                 getShows()
                 tableView.reloadData()
             }
-        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -135,9 +139,4 @@ private extension HomeViewController {
     }
 }
 
-extension HomeViewController: WKNavigationDelegate {
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        print("loaded")
-    }
-}
 

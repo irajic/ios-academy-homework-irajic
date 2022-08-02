@@ -9,7 +9,7 @@ import UIKit
 import MBProgressHUD
 import Alamofire
 
-@main
+ @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 

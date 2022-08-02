@@ -28,6 +28,7 @@ final class ShowDetailsViewController: UIViewController {
     private var itemsPerPage: Int = 5
     private var numberOfItems: Int = 0
     private var numberOfPages: Int = 0
+    private var isLoadingReviews = false
     
     // MARK: - Lifecycle methodes
     
@@ -74,6 +75,7 @@ final class ShowDetailsViewController: UIViewController {
     
     private func getReviews() {
         MBProgressHUD.showAdded(to: view, animated: true)
+        self.isLoadingReviews = true
         
         AF
             .request(
@@ -85,7 +87,6 @@ final class ShowDetailsViewController: UIViewController {
             .validate()
             .responseDecodable(of: ReviewsResponse.self) { [weak self] reviewResponse in
                 guard let self = self else { return }
-                MBProgressHUD.hide(for: self.view, animated: true)
                 switch reviewResponse.result {
                 case .success(let reviewsResponse):
                     self.items.append(contentsOf: reviewsResponse.reviews)
@@ -98,6 +99,8 @@ final class ShowDetailsViewController: UIViewController {
                 case .failure:
                     print("Reviews can not be added")
                 }
+                MBProgressHUD.hide(for: self.view, animated: true)
+                self.isLoadingReviews = false
             }
     }
 }
@@ -107,7 +110,9 @@ extension ShowDetailsViewController: UITableViewDelegate {
         if indexPath.section == 0 {
             return 650
         } else {
-            return 100
+            tableViewDetails.estimatedRowHeight = 150
+            tableViewDetails.rowHeight = UITableView.automaticDimension
+            return tableViewDetails.rowHeight
         }
     }
     
@@ -116,13 +121,18 @@ extension ShowDetailsViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == items.count - 1 {
-            if numberOfItems > items.count {
+        guard indexPath.row == items.count - 1  else {
+            return
+        }
+            if
+                numberOfItems > items.count,
+                !isLoadingReviews
+        
+        {
                 currentPage = currentPage + 1
                 getReviews()
                 tableView.reloadData()
             }
-        }
     }
 }
 
@@ -176,7 +186,7 @@ extension ShowDetailsViewController: UITableViewDataSource {
 
 extension ShowDetailsViewController {
     func setUpTableView() {
-        tableViewDetails.estimatedRowHeight = 110
+        tableViewDetails.estimatedRowHeight = 650
         tableViewDetails.rowHeight = UITableView.automaticDimension
         tableViewDetails.dataSource = self
         tableViewDetails.delegate = self
@@ -184,7 +194,7 @@ extension ShowDetailsViewController {
 }
 
 extension ShowDetailsViewController: WriteReviewControllerDelegate {
-    func newReview(_ review: NewReview) {
+    func didAddNewReview(_ review: NewReview) {
         tableViewDetails.reloadData()
     }
 }

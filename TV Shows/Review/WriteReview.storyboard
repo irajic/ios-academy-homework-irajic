@@ -44,17 +44,8 @@
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="87L-em-pc5">
-                                <rect key="frame" x="20" y="274" width="350" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="MyA-uX-Kz5"/>
-                                    <constraint firstAttribute="width" constant="350" id="nFP-iQ-x8C"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zdg-xL-OP7">
-                                <rect key="frame" x="20" y="504" width="350" height="50"/>
+                                <rect key="frame" x="20" y="500" width="350" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="8m4-TY-zAR"/>
                                     <constraint firstAttribute="width" constant="350" id="tXW-QL-uwJ"/>
@@ -70,6 +61,17 @@
                                     <action selector="submitReview:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="0Yj-aW-HqE"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter your comment here..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Z8K-YB-RdQ">
+                                <rect key="frame" x="20" y="274" width="350" height="196"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="196" id="YqG-QW-Nqs"/>
+                                    <constraint firstAttribute="width" constant="350" id="ztS-se-6PH"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -78,17 +80,17 @@
                             <constraint firstItem="wKm-1G-f6W" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="2Eh-dt-7rc"/>
                             <constraint firstItem="gNC-Xq-oWA" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="80" id="4rl-tn-snG"/>
                             <constraint firstItem="wKm-1G-f6W" firstAttribute="top" secondItem="gNC-Xq-oWA" secondAttribute="bottom" constant="20" id="Ktg-zY-i0X"/>
+                            <constraint firstItem="Z8K-YB-RdQ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="LOv-U5-b9u"/>
                             <constraint firstItem="Zdg-xL-OP7" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="OjL-UH-Nx8"/>
-                            <constraint firstItem="Zdg-xL-OP7" firstAttribute="top" secondItem="87L-em-pc5" secondAttribute="bottom" constant="30" id="PoY-3X-Hz7"/>
-                            <constraint firstItem="87L-em-pc5" firstAttribute="top" secondItem="Lgi-g7-Nsd" secondAttribute="bottom" constant="20" id="UrP-X1-iDz"/>
+                            <constraint firstItem="Zdg-xL-OP7" firstAttribute="top" secondItem="Z8K-YB-RdQ" secondAttribute="bottom" constant="30" id="c43-wj-AWm"/>
                             <constraint firstItem="Lgi-g7-Nsd" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="gz6-Iw-9yi"/>
-                            <constraint firstItem="87L-em-pc5" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="s86-Qh-0Cs"/>
                             <constraint firstItem="gNC-Xq-oWA" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="sl3-y7-RyC"/>
+                            <constraint firstItem="Z8K-YB-RdQ" firstAttribute="top" secondItem="Lgi-g7-Nsd" secondAttribute="bottom" constant="20" id="snF-OO-YIk"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="iAN-PO-wS3"/>
                     <connections>
-                        <outlet property="commentTF" destination="87L-em-pc5" id="g4N-ZX-lhL"/>
+                        <outlet property="commentTF" destination="Z8K-YB-RdQ" id="8D8-UG-EIF"/>
                         <outlet property="ratingViewSelect" destination="wKm-1G-f6W" id="41d-j7-l85"/>
                         <outlet property="submitButton" destination="Zdg-xL-OP7" id="TPm-we-TD7"/>
                     </connections>
@@ -99,6 +101,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

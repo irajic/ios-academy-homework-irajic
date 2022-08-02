@@ -25,6 +25,7 @@ final class HomeViewController: UIViewController {
     private var itemsPerPage: Int = 20
     private var numberOfItems: Int = 0
     private var numberOfPages: Int = 0
+    private var isLoadingShows = false
     
     // MARK: - Outlets
     
@@ -86,6 +87,7 @@ private extension HomeViewController {
     
     private func getShows() {
         MBProgressHUD.showAdded(to: view, animated: true)
+        isLoadingShows = true
         
         AF
             .request(
@@ -97,16 +99,18 @@ private extension HomeViewController {
             .validate()
             .responseDecodable(of: ShowsResponse.self) { [weak self] dataResponse in
                 guard let self = self else { return }
-                MBProgressHUD.hide(for: self.view, animated: true)
                 switch dataResponse.result {
                 case .success(let showsResponse):
                     self.items.append(contentsOf: showsResponse.shows)
                     self.numberOfItems = showsResponse.meta.pagination.count
                     self.numberOfPages = showsResponse.meta.pagination.pages
                     self.tableView.reloadData()
+                    self.isLoadingShows = true
                 case .failure:
                     print("Shows can not be added")
                 }
+                MBProgressHUD.hide(for: self.view, animated: true)
+                self.isLoadingShows = false
             }
     }
 }
@@ -138,13 +142,18 @@ extension HomeViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == items.count - 1 {
-            if numberOfItems > items.count {
+        guard indexPath.row == items.count - 1  else {
+            return
+        }
+            if
+                numberOfItems > items.count,
+                !isLoadingShows
+        
+        {
                 currentPage = currentPage + 1
                 getShows()
                 tableView.reloadData()
             }
-        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -168,4 +177,5 @@ private extension HomeViewController {
         tableView.dataSource = self
     }
 }
+
 

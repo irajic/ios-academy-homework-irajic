@@ -151,6 +151,7 @@
                                             <outlet property="ratingView55" destination="fkE-qB-Nlz" id="rSe-tk-OI7"/>
                                             <outlet property="reviewLabel" destination="4fP-1R-mlC" id="Vd6-je-lpr"/>
                                             <outlet property="userEmailLabel" destination="Rmw-Rp-XGT" id="c0Z-Xf-u7q"/>
+                                            <outlet property="userImage" destination="Ocj-eL-bTr" id="TZz-Qj-gdF"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

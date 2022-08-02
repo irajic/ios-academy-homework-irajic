@@ -16,6 +16,10 @@ final class ProfileViewController: UIViewController {
     
     var authInfo: AuthInfo? = nil
     
+    // MARK: - Private properties
+    
+    let NotificationLogoutRequested = "NotificationLogoutRequested"
+    
     // MARK: - Outlets
     
     @IBOutlet private weak var userEmailLabel: UILabel!
@@ -26,6 +30,7 @@ final class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         addCloseButton()
         fetchUserInfo()
     }
@@ -37,6 +42,20 @@ final class ProfileViewController: UIViewController {
     
     @objc func dismissSelf() {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func logputButtonActionHandler(_ sender: UIButton) {
+        dismiss(animated: true, completion:  {
+            UserDefaults.standard.removeObject(forKey: "authInfo")
+            let notification = Notification(
+                name: Notification.Name(rawValue: "NotificationLogoutRequested"),
+                object: nil,
+                userInfo: [:]
+            )
+            NotificationCenter.default.post(notification)
+        })
     }
 }
 
@@ -65,5 +84,12 @@ private extension ProfileViewController {
                     print("User info can't be feched")
                 }
             }
+    }
+}
+
+extension ProfileViewController: UINavigationControllerDelegate {
+    func didLogout(_ navigationController: UINavigationController) -> Bool {
+        navigationController.resignFirstResponder()
+        return true
     }
 }

@@ -16,6 +16,7 @@ final class HomeViewController: UIViewController {
     // MARK: - Public properties
     
     var authInfo: AuthInfo? = nil
+    var notificationToken: NSObjectProtocol?
     
     // MARK: - Private properties
     
@@ -46,6 +47,21 @@ final class HomeViewController: UIViewController {
         )
         profileDetailsItem.tintColor = UIColor.black
         navigationItem.rightBarButtonItem = profileDetailsItem
+        
+        let storyboard = UIStoryboard(name: "Login", bundle: .main)
+        let loginViewController = storyboard.instantiateViewController(withIdentifier: "Login") as! LoginViewController
+        notificationToken = NotificationCenter
+            .default
+            .addObserver(
+                forName: Notification.Name(rawValue: "NotificationLogoutRequested"),
+                object: nil,
+                queue: nil,
+                using: { notification in
+                    self.navigationController?.setViewControllers([loginViewController], animated: true)
+                })
+    }
+    deinit {
+        NotificationCenter.default.removeObserver(notificationToken!)
     }
     
     override func viewWillAppear(_ animated: Bool) {

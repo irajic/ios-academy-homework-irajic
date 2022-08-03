@@ -34,9 +34,17 @@ final class ShowDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         title = shows?.title
         setUpTableView()
         getReviews()
+        
+        tableViewDetails.refreshControl = UIRefreshControl()
+        tableViewDetails.refreshControl?.addTarget(
+            self,
+            action: #selector(didPullToRefresh),
+            for: .valueChanged
+        )
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -55,6 +63,14 @@ final class ShowDetailsViewController: UIViewController {
         writeReviewViewController.showID = Int(showID)!
         writeReviewViewController.authInfo = authInfo
         present(navigationController, animated: true)
+    }
+    
+    // MARK: - Methodes
+    
+    @objc private func didPullToRefresh() {
+        items.removeAll()
+        currentPage = 1
+        getReviews()
     }
     
     private func getReviews() {
@@ -76,8 +92,10 @@ final class ShowDetailsViewController: UIViewController {
                     self.items.append(contentsOf: reviewsResponse.reviews)
                     self.numberOfItems = reviewsResponse.meta.pagination.count
                     self.numberOfPages = reviewsResponse.meta.pagination.pages
-                    self.tableViewDetails.reloadData()
-                    
+                    DispatchQueue.main.async {
+                        self.tableViewDetails.refreshControl?.endRefreshing()
+                        self.tableViewDetails.reloadData()
+                    }
                 case .failure:
                     print("Reviews can not be added")
                 }
@@ -128,6 +146,26 @@ extension ShowDetailsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if shows?.numberOfReviews != 0 {
+           let cell = numberOfReviewsNotZero(indexPath: indexPath)
+            return cell
+        } else {
+            let cell = numberOfReviewsZero(indexPath: indexPath)
+            return cell
+        }
+    }
+}
+
+
+extension ShowDetailsViewController {
+    func setUpTableView() {
+        tableViewDetails.estimatedRowHeight = 650
+        tableViewDetails.rowHeight = UITableView.automaticDimension
+        tableViewDetails.dataSource = self
+        tableViewDetails.delegate = self
+    }
+    
+    private func numberOfReviewsNotZero(indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell1 = tableViewDetails.dequeueReusableCell(
                 withIdentifier: String(describing: ShowDetailsTableViewCell.self),
@@ -143,16 +181,26 @@ extension ShowDetailsViewController: UITableViewDataSource {
             cell2.configureCell(with: items[indexPath.row])
             return cell2
         }
-    }
-}
-
-
-extension ShowDetailsViewController {
-    func setUpTableView() {
-        tableViewDetails.estimatedRowHeight = 650
-        tableViewDetails.rowHeight = UITableView.automaticDimension
-        tableViewDetails.dataSource = self
-        tableViewDetails.delegate = self
+     }
+    
+private func numberOfReviewsZero(indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            let cell1 = tableViewDetails.dequeueReusableCell(
+                withIdentifier: String(describing: ShowDetailsTableViewCell.self),
+                for: indexPath
+            ) as! ShowDetailsTableViewCell
+            cell1.configureCell(with: shows)
+            return cell1
+        } else {
+            let cell2 = tableViewDetails.dequeueReusableCell(
+                withIdentifier: String(describing: ReviewDetailsTableViewCell.self),
+                for: indexPath
+            ) as! ReviewDetailsTableViewCell
+            cell2.isHidden = true
+            numberOfItems = 0
+            numberOfPages = 0
+            return cell2
+        }
     }
 }
 
@@ -161,3 +209,4 @@ extension ShowDetailsViewController: WriteReviewControllerDelegate {
         tableViewDetails.reloadData()
     }
 }
+

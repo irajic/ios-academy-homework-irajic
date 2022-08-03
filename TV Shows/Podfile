@@ -9,5 +9,7 @@ target 'TV Shows' do
   
   pod 'MBProgressHUD'
   pod "Alamofire"
+  pod 'Kingfisher', '~> 7.0'
+  pod "KeychainAccess"
 
 end

@@ -17,7 +17,7 @@ struct Show: Decodable {
     let title: String
     let averageRating: Double?
     let description: String?
-    let imageUrl: String?
+    let imageUrl: URL?
     let numberOfReviews: Int
     
     enum CodingKeys: String, CodingKey {

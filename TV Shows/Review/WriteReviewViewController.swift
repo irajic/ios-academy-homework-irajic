@@ -28,6 +28,10 @@ class WriteReviewViewController: UIViewController {
     var shows: Show?
     weak var delegate: WriteReviewControllerDelegate?
     
+    // MARK: - Outlets
+    
+    @IBOutlet weak var submitButton: UIButton!
+    
     // MARK: - Lifecycle methodes
     
     override func viewDidLoad() {
@@ -36,6 +40,7 @@ class WriteReviewViewController: UIViewController {
         
         ratingViewSelect.configure(withStyle: .large)
         ratingViewSelect.isEnabled = true
+        pulsateButton()
     }
     
     // MARK: - Methodes
@@ -88,6 +93,7 @@ private extension WriteReviewViewController {
                     self.delegate?.didAddNewReview(reviewResponse.review)
                     self.dismiss(animated: true, completion: nil)
                 case .failure:
+                    self.pulsateButton()
                     self.handleFaliure()
                 }
             }
@@ -98,6 +104,18 @@ private extension WriteReviewViewController {
         let OKAction = UIAlertAction(title: "OK", style: .default)
         alertController.addAction(OKAction)
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    private func pulsateButton() {
+        let newTransforme = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        
+        UIView.animate(withDuration: 0.4) {
+            UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true) {
+                self.submitButton.transform = newTransforme
+            }
+        } completion: { _ in
+            self.submitButton.transform = .identity
+        }
     }
 }
 

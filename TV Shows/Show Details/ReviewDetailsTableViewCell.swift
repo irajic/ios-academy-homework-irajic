@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ReviewDetailsTableViewCell: UITableViewCell {
     
@@ -13,6 +14,7 @@ class ReviewDetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var userEmailLabel: UILabel!
     @IBOutlet weak var reviewLabel: UILabel!
     @IBOutlet weak var ratingView55: RatingView!
+    @IBOutlet weak var userImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,7 +27,6 @@ class ReviewDetailsTableViewCell: UITableViewCell {
         super.prepareForReuse()
         userEmailLabel.text = ""
         reviewLabel.text = ""
-
     }
     
     // MARK: - Methodes
@@ -35,6 +36,11 @@ class ReviewDetailsTableViewCell: UITableViewCell {
         reviewLabel.text = "\(item.comment)"
         
         ratingView55.setRoundedRating(Double(item.rating))
+        
+        userImage.kf.setImage(
+            with: item.user.imageUrl,
+            placeholder: UIImage(named: "ic-profile-placeholder")
+        )
     }
 }
 

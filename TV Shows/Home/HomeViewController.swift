@@ -6,15 +6,17 @@
 //
 
 import UIKit
+import SwiftUI
 import MBProgressHUD
 import Alamofire
-import WebKit
+import Kingfisher
 
 final class HomeViewController: UIViewController {
     
     // MARK: - Public properties
     
     var authInfo: AuthInfo? = nil
+    var notificationToken: NSObjectProtocol?
     
     // MARK: - Private properties
     
@@ -37,10 +39,51 @@ final class HomeViewController: UIViewController {
         self.title = "Shows"
         self.navigationItem.setHidesBackButton(true, animated: false)
         getShows()
+        
+        let profileDetailsItem = UIBarButtonItem(
+            image: UIImage(named: "ic-profile"),
+            style: .plain,
+            target: self,
+            action: #selector(profileDetailsActionHandler)
+        )
+        profileDetailsItem.tintColor = UIColor.black
+        navigationItem.rightBarButtonItem = profileDetailsItem
+        notify()
+    }
+    deinit {
+        NotificationCenter.default.removeObserver(notificationToken!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    // MARK: - Methodes
+    
+    @objc
+    private func profileDetailsActionHandler() {
+        let profileStoryboard = UIStoryboard(name: "ProfileDetails", bundle: nil)
+        let profileViewController = profileStoryboard.instantiateViewController(withIdentifier: "Profile") as! ProfileViewController
+        
+        let navigationController = UINavigationController(rootViewController: profileViewController)
+        navigationController.modalPresentationStyle = .fullScreen
+        profileViewController.authInfo = authInfo
+        present(navigationController, animated: true)
+    }
+    
+    private func notify() {
+        let storyboard = UIStoryboard(name: "Login", bundle: .main)
+        let loginViewController = storyboard.instantiateViewController(withIdentifier: "Login") as! LoginViewController
+        notificationToken = NotificationCenter
+            .default
+            .addObserver(
+                forName: Notification.Name(rawValue: "NotificationLogoutRequested"),
+                object: nil,
+                queue: nil,
+                using: { [weak self] notification in
+                    guard let self = self else { return }
+                    self.navigationController?.setViewControllers([loginViewController], animated: true)
+                })
     }
 }
 
@@ -83,7 +126,7 @@ extension HomeViewController: UITableViewDataSource {
             for: indexPath
         ) as! ShowTableViewCell
         
-        let item = items[indexPath.row].title
+        let item = items[indexPath.row]
         cell.configure(with: item)
         return cell
     }

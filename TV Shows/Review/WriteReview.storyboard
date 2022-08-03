@@ -92,6 +92,7 @@
                     <connections>
                         <outlet property="commentTF" destination="Z8K-YB-RdQ" id="8D8-UG-EIF"/>
                         <outlet property="ratingViewSelect" destination="wKm-1G-f6W" id="41d-j7-l85"/>
+                        <outlet property="submitButton" destination="Zdg-xL-OP7" id="TPm-we-TD7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

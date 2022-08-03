@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ShowDetailsTableViewCell: UITableViewCell {
     
@@ -14,6 +15,7 @@ class ShowDetailsTableViewCell: UITableViewCell {
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var reviewInfo: UILabel!
     @IBOutlet weak var ratingViewAvarage: RatingView!
+    @IBOutlet private weak var showImageBig: UIImageView!
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -31,11 +33,28 @@ class ShowDetailsTableViewCell: UITableViewCell {
     
     // MARK: - Methodes
     func configureCell(with item: Show?) {
-        guard let item = item else { return }
-        descriptionLabel.text = item.description
-        let rating = item.averageRating
-        guard let rating = rating else { return }
-        ratingViewAvarage.setRoundedRating(rating)
-        reviewInfo.text = "\(item.numberOfReviews) reviews, \(String(describing: rating)) avarage"
+        if item?.numberOfReviews != 0 {
+            showImageBig.kf.setImage(
+                with: item?.imageUrl,
+                placeholder: UIImage(named: "ic-show-placeholder-vertical")
+            )
+            guard let item = item else { return }
+            descriptionLabel.text = item.description
+            let rating = item.averageRating
+            guard let rating = rating else { return }
+            ratingViewAvarage.setRoundedRating(rating)
+            reviewInfo.text = "\(item.numberOfReviews) reviews, \(String(describing: rating)) avarage"
+        } else {
+            showImageBig.kf.setImage(
+                with: item?.imageUrl,
+                placeholder: UIImage(named: "ic-show-placeholder-vertical")
+            )
+            guard let item = item else { return }
+            descriptionLabel.text = item.description
+            reviewInfo.center.x = self.center.x
+            reviewInfo.text = "No reviews yet"
+            reviewInfo.textAlignment = .center
+            ratingViewAvarage.isHidden = true
+        }
     }
 }

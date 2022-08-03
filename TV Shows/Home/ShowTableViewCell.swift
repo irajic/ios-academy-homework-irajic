@@ -6,19 +6,27 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ShowTableViewCell: UITableViewCell {
 
     // MARK: - Outlets
     
     @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var showImage: UIImageView!
     
     override func prepareForReuse() {
         super.prepareForReuse()
         titleLabel.text = ""
+        showImage.image = UIImage(named:"ic-show-placeholder-vertical")
     }
     
-    func configure(with item: String) {
-        titleLabel.text = "\(item)"
+    func configure(with item: Show?) {
+        guard let title = item?.title else { return }
+        titleLabel.text = "\(title)"
+        showImage.kf.setImage(
+            with: item?.imageUrl,
+            placeholder: UIImage(named:"ic-show-placeholder-vertical")
+        )
     }
 }

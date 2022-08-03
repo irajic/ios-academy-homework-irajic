@@ -16,10 +16,7 @@ class LoginViewController: UIViewController {
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet weak var infoLabel: UILabel!
-    
-    // MARK: - Private Properties
-    
-    private var rememberMeFlag: Bool = false
+    @IBOutlet weak var rememberMeButton: UIButton!
     
     // MARK: - Lifecycle methodes
     
@@ -31,7 +28,6 @@ class LoginViewController: UIViewController {
     
     @IBAction private func checkButton(_ sender: UIButton) {
         sender.isSelected.toggle()
-        rememberMeFlag = !rememberMeFlag
     }
     
     @IBAction private func passwordVisibility(_ sender: UIButton) {
@@ -132,7 +128,7 @@ class LoginViewController: UIViewController {
             infoLabel.text = "Missing headers"
             return
         }
-        if rememberMeFlag {
+        if rememberMeButton.isSelected {
             let encoder = PropertyListEncoder()
             if let encoded = try? encoder.encode(authInfo) {
                 UserDefaults.standard.set(encoded, forKey: "authInfo")

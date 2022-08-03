@@ -147,22 +147,43 @@ extension ShowDetailsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if shows?.numberOfReviews != 0 {
-           if indexPath.section == 0 {
-                let cell1 = tableViewDetails.dequeueReusableCell(
-                    withIdentifier: String(describing: ShowDetailsTableViewCell.self),
-                    for: indexPath
-                ) as! ShowDetailsTableViewCell
-                cell1.configureCell(with: shows)
-                return cell1
-            } else {
-                let cell2 = tableViewDetails.dequeueReusableCell(
-                    withIdentifier: String(describing: ReviewDetailsTableViewCell.self),
-                    for: indexPath
-                ) as! ReviewDetailsTableViewCell
-                cell2.configureCell(with: items[indexPath.row])
-                return cell2
-            }
+           let cell = numberOfReviewsNotZero(indexPath: indexPath)
+            return cell
         } else {
+            let cell = numberOfReviewsZero(indexPath: indexPath)
+            return cell
+        }
+    }
+}
+
+
+extension ShowDetailsViewController {
+    func setUpTableView() {
+        tableViewDetails.estimatedRowHeight = 650
+        tableViewDetails.rowHeight = UITableView.automaticDimension
+        tableViewDetails.dataSource = self
+        tableViewDetails.delegate = self
+    }
+    
+    private func numberOfReviewsNotZero(indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            let cell1 = tableViewDetails.dequeueReusableCell(
+                withIdentifier: String(describing: ShowDetailsTableViewCell.self),
+                for: indexPath
+            ) as! ShowDetailsTableViewCell
+            cell1.configureCell(with: shows)
+            return cell1
+        } else {
+            let cell2 = tableViewDetails.dequeueReusableCell(
+                withIdentifier: String(describing: ReviewDetailsTableViewCell.self),
+                for: indexPath
+            ) as! ReviewDetailsTableViewCell
+            cell2.configureCell(with: items[indexPath.row])
+            return cell2
+        }
+     }
+    
+private func numberOfReviewsZero(indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell1 = tableViewDetails.dequeueReusableCell(
                 withIdentifier: String(describing: ShowDetailsTableViewCell.self),
@@ -180,16 +201,6 @@ extension ShowDetailsViewController: UITableViewDataSource {
             numberOfPages = 0
             return cell2
         }
-    }
-}
-}
-
-extension ShowDetailsViewController {
-    func setUpTableView() {
-        tableViewDetails.estimatedRowHeight = 650
-        tableViewDetails.rowHeight = UITableView.automaticDimension
-        tableViewDetails.dataSource = self
-        tableViewDetails.delegate = self
     }
 }
 

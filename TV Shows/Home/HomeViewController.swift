@@ -48,18 +48,7 @@ final class HomeViewController: UIViewController {
         )
         profileDetailsItem.tintColor = UIColor.black
         navigationItem.rightBarButtonItem = profileDetailsItem
-        
-        let storyboard = UIStoryboard(name: "Login", bundle: .main)
-        let loginViewController = storyboard.instantiateViewController(withIdentifier: "Login") as! LoginViewController
-        notificationToken = NotificationCenter
-            .default
-            .addObserver(
-                forName: Notification.Name(rawValue: "NotificationLogoutRequested"),
-                object: nil,
-                queue: nil,
-                using: { notification in
-                    self.navigationController?.setViewControllers([loginViewController], animated: true)
-                })
+        notify()
     }
     deinit {
         NotificationCenter.default.removeObserver(notificationToken!)
@@ -80,6 +69,21 @@ final class HomeViewController: UIViewController {
         navigationController.modalPresentationStyle = .fullScreen
         profileViewController.authInfo = authInfo
         present(navigationController, animated: true)
+    }
+    
+    private func notify() {
+        let storyboard = UIStoryboard(name: "Login", bundle: .main)
+        let loginViewController = storyboard.instantiateViewController(withIdentifier: "Login") as! LoginViewController
+        notificationToken = NotificationCenter
+            .default
+            .addObserver(
+                forName: Notification.Name(rawValue: "NotificationLogoutRequested"),
+                object: nil,
+                queue: nil,
+                using: { [weak self] notification in
+                    guard let self = self else { return }
+                    self.navigationController?.setViewControllers([loginViewController], animated: true)
+                })
     }
 }
 

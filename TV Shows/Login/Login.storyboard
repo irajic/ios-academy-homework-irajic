@@ -191,6 +191,7 @@
                         <outlet property="emailTextField" destination="fCE-oj-Jh3" id="SfD-aV-iTr"/>
                         <outlet property="infoLabel" destination="5jO-H7-5id" id="VdN-tk-Xqg"/>
                         <outlet property="passwordTextField" destination="hhr-LC-wDM" id="uNa-MK-uHg"/>
+                        <outlet property="rememberMeButton" destination="4Ex-5m-oIW" id="UHM-UV-0mr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

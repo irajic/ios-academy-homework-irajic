@@ -33,7 +33,7 @@ class ShowDetailsTableViewCell: UITableViewCell {
     
     // MARK: - Methodes
     func configureCell(with item: Show?) {
-        if(item?.numberOfReviews != 0) {
+        if item?.numberOfReviews != 0 {
             showImageBig.kf.setImage(
                 with: item?.imageUrl,
                 placeholder: UIImage(named: "ic-show-placeholder-vertical")

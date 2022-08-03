@@ -18,6 +18,7 @@ class ShowTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         titleLabel.text = ""
+        showImage.image = UIImage(named:"ic-show-placeholder-vertical")
     }
     
     func configure(with item: Show?) {
